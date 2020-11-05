@@ -1,0 +1,25 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    {% block title %}{% endblock %}
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% include 'blocks/style.html' %}
+</head>
+
+<body>
+    <div class="wrapper">
+       {% include 'blocks/header.html' %}
+
+        {% block content %}
+        {% endblock %}
+
+       {% include 'blocks/footer.html' %}
+    </div>
+    {% include 'blocks/script.html' %}
+</body>
+
+</html>
