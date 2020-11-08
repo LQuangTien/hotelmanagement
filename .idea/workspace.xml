@@ -3,15 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="6b045cda-90df-415a-8536-267c3006790e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/admin_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/admin_module.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/static/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/templates/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/base/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/templates/blocks/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/blocks/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/templates/blocks/style.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/blocks/style.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/our-room.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/our-room.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
