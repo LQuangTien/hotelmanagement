@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6b045cda-90df-415a-8536-267c3006790e" name="Default Changelist" comment="" />
+    <list default="true" id="6b045cda-90df-415a-8536-267c3006790e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/admin_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/admin_module.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/static/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/static/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/base/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/blocks/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/blocks/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/blocks/style.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/blocks/style.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/our-room.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/our-room.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +26,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1iwxdJSvQu9MElCwn2Rby9mxfPh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -24,19 +39,21 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mainapp/templates/admin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mainapp/templates/hotel" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\CNPM\mainapp" />
       <recent name="C:\Users\Admin\Desktop\CNPM" />
       <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates" />
       <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates\hotel\blocks" />
       <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\static" />
-      <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates\admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates\hotel" />
       <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates\admin" />
       <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates" />
       <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\static" />
@@ -158,6 +175,9 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="ServiceViewManager">
+    <option name="showServicesTree" value="false" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -172,22 +192,26 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1345" height="122" key="GridCell.Tab.0.bottom" timestamp="1604565283895">
+    <state x="430" y="229" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1604643605756">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="122" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1604565283895" />
-    <state width="1345" height="122" key="GridCell.Tab.0.center" timestamp="1604565283895">
+    <state x="430" y="229" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.728@0.0.1366.728" timestamp="1604643605756" />
+    <state width="1345" height="122" key="GridCell.Tab.0.bottom" timestamp="1604734663948">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="122" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1604565283895" />
-    <state width="1345" height="122" key="GridCell.Tab.0.left" timestamp="1604565283895">
+    <state width="1345" height="122" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1604734663948" />
+    <state width="1345" height="122" key="GridCell.Tab.0.center" timestamp="1604734663948">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="122" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1604565283895" />
-    <state width="1345" height="122" key="GridCell.Tab.0.right" timestamp="1604565283895">
+    <state width="1345" height="122" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1604734663948" />
+    <state width="1345" height="122" key="GridCell.Tab.0.left" timestamp="1604734663948">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="122" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1604565283895" />
+    <state width="1345" height="122" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1604734663948" />
+    <state width="1345" height="122" key="GridCell.Tab.0.right" timestamp="1604734663948">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="122" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1604734663948" />
     <state width="1328" height="222" key="GridCell.Tab.1.bottom" timestamp="1602836544152">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -212,9 +236,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="352" y="0" width="661" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1604229467302" />
-    <state x="339" y="17" width="670" height="676" key="search.everywhere.popup" timestamp="1604556265084">
+    <state x="339" y="17" width="670" height="676" key="search.everywhere.popup" timestamp="1604731545842">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="17" width="670" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1604556265084" />
+    <state x="339" y="17" width="670" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1604731545842" />
   </component>
 </project>
