@@ -31,10 +31,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b045cda-90df-415a-8536-267c3006790e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CNPM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CNPM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/services/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/services/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/contact-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/contact-us.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,17 +71,17 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates\hotel" />
-      <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates\admin" />
-      <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates" />
-      <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\static" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Admin\Desktop\CNPM\mainapp" />
       <recent name="C:\Users\Admin\Desktop\CNPM" />
       <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates" />
       <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates\hotel\blocks" />
+      <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\static" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates\hotel" />
+      <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates\admin" />
+      <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\templates" />
       <recent name="C:\Users\Admin\Desktop\CNPM\mainapp\static" />
     </key>
   </component>
@@ -198,7 +201,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -217,33 +220,43 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="457" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604845427302">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="457" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1604845427302" />
+    <state x="402" y="0" key="#main_(1)" timestamp="1604841492990">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="402" y="0" key="#main_(1)/0.0.1366.728@0.0.1366.728" timestamp="1604841492990" />
     <state x="430" y="229" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1604643605756">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="430" y="229" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.728@0.0.1366.728" timestamp="1604643605756" />
-    <state width="1345" height="179" key="GridCell.Tab.0.bottom" timestamp="1604837860917">
+    <state width="1345" height="122" key="GridCell.Tab.0.bottom" timestamp="1604845875674">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1604837860917" />
-    <state width="1345" height="179" key="GridCell.Tab.0.center" timestamp="1604837860917">
+    <state width="1345" height="122" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1604845875674" />
+    <state width="1345" height="122" key="GridCell.Tab.0.center" timestamp="1604845875673">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1604837860917" />
-    <state width="1345" height="179" key="GridCell.Tab.0.left" timestamp="1604837860917">
+    <state width="1345" height="122" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1604845875673" />
+    <state width="1345" height="122" key="GridCell.Tab.0.left" timestamp="1604845875673">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1604837860917" />
-    <state width="1345" height="179" key="GridCell.Tab.0.right" timestamp="1604837860917">
+    <state width="1345" height="122" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1604845875673" />
+    <state width="1345" height="122" key="GridCell.Tab.0.right" timestamp="1604845875673">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1604837860917" />
+    <state width="1345" height="122" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1604845875673" />
     <state width="1345" height="223" key="GridCell.Tab.1.bottom" timestamp="1604834978130">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -260,10 +273,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1345" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1604834978130" />
-    <state x="184" y="6" key="SettingsEditor" timestamp="1604563764819">
+    <state x="184" y="6" key="SettingsEditor" timestamp="1604844148665">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1604563764819" />
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1604844148665" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1604837677588">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -276,9 +289,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="352" y="0" width="661" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1604229467302" />
-    <state x="339" y="17" width="670" height="676" key="search.everywhere.popup" timestamp="1604731545842">
+    <state x="339" y="17" width="672" height="676" key="search.everywhere.popup" timestamp="1604843094993">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="17" width="670" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1604731545842" />
+    <state x="339" y="17" width="672" height="676" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1604843094993" />
   </component>
 </project>

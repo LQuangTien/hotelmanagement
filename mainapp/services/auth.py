@@ -11,6 +11,6 @@ def authValidate(request):
 
 def contactValidate(request):
     name = request.form.get('name')
-    mail = request.form.get('email')
+    email = request.form.get('email')
     message = request.form.get('message')
-    return name, mail, message
+    return name, email, message

@@ -1,10 +1,9 @@
 from flask import render_template, request, redirect
 from flask_login import login_user, login_required
-from mainapp import app, login, utils
+from mainapp import app, login, utils, mail
 from math import ceil
 from mainapp.services.auth import authValidate, contactValidate
-import smtplib, os
-
+from flask_mail import Message
 login.login_view = "login"
 
 
@@ -33,27 +32,20 @@ def aboutus():
     return render_template('hotel/about-us.html')
 
 
+
+
 @app.route("/contact", methods=['post', 'get'])
 def contact():
     if request.method == 'GET':
         return render_template('hotel/contact-us.html')
     if request.method == 'POST':
-        gmail_user = 'vudung.dung.com@gmail.com'
-        gmail_password = '02057070spk'
-        subject, to, body = contactValidate(request)
-
-        try:
-            with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-                smtp.ehlo()
-                smtp.starttls()
-                smtp.ehlo()
-                msg = f'Subject: {subject} \n\n {body}'
-                smtp.login(gmail_user, gmail_password)
-                smtp.sendmail(gmail_user, to, msg)
-            print('Email sent!')
-        except:
-            print('Something went wrong...')
-        return render_template('hotel/contact-us.html')
+        name, email, message = contactValidate(request)
+        msg = Message('Hello',
+                      sender='tienkg5554@gmail.com',
+                      recipients=['tienkg4445@gmail.com'])
+        msg.body = email + "\n" + name + "\n" + message
+        mail.send(msg)
+        return redirect('/')
 
 
 @app.route("/gallery")
