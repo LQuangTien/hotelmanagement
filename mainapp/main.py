@@ -1,8 +1,9 @@
 from flask import render_template, request, redirect
 from flask_login import login_user, login_required
-from mainapp import app, login, utils
+from mainapp import app, login, utils, mail
 from math import ceil
-from mainapp.services.auth import authValidate
+from mainapp.services.auth import authValidate, contactValidate
+from flask_mail import Message
 login.login_view = "login"
 
 
@@ -31,9 +32,20 @@ def aboutus():
     return render_template('hotel/about-us.html')
 
 
-@app.route("/contact")
+
+
+@app.route("/contact", methods=['post', 'get'])
 def contact():
-    return render_template('hotel/contact-us.html')
+    if request.method == 'GET':
+        return render_template('hotel/contact-us.html')
+    if request.method == 'POST':
+        name, email, message = contactValidate(request)
+        msg = Message('Hello',
+                      sender='tienkg5554@gmail.com',
+                      recipients=['tienkg4445@gmail.com'])
+        msg.body = email + "\n" + name + "\n" + message
+        mail.send(msg)
+        return redirect('/')
 
 
 @app.route("/gallery")

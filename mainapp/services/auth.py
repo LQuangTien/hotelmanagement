@@ -1,7 +1,6 @@
 import hashlib
 from mainapp.models import User
 
-
 def authValidate(request):
     username = request.form.get('username')
     password = request.form.get('password')
@@ -9,3 +8,9 @@ def authValidate(request):
     user = User.query.filter(User.username == username.strip(),
                              User.password == password).first()
     return user
+
+def contactValidate(request):
+    name = request.form.get('name')
+    email = request.form.get('email')
+    message = request.form.get('message')
+    return name, email, message
