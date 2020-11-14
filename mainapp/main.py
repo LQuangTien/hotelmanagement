@@ -69,6 +69,9 @@ def register():
         return render_template('hotel/register.html')
     if request.method == 'POST':
         user = registerValidate(request)
+        if user == None:
+            notification = "Register Fail"
+            return render_template('hotel/register.html', notification=notification)
         db.session.add(user)
         db.session.commit()
         notification = "Register successfully!"
@@ -85,8 +88,8 @@ def login():
             login_user(user=user)
             return redirect('/')
         else:
-            a = "Đăng nhập thất bại"
-            return render_template('hotel/login.html',a = a)
+            notification = "login Fail"
+            return render_template('hotel/login.html',notification = notification)
 
 @app.route('/login-admin', methods=['post', 'get'])
 def login_admin():
@@ -99,4 +102,4 @@ def login_admin():
 
 if __name__ == "__main__":
     from mainapp.admin_module import *
-    app.run(debug=True,port=8900)
+    app.run(debug=True,port=9000)
