@@ -12,8 +12,9 @@
 
 <body>
     <div class="wrapper">
-        {% include 'blocks/header.html' %}
-
+        {% with name=name %}
+            {% include 'blocks/header.html' %}
+        {% endwith %}
         {% block content %}
         {% endblock %}
 
