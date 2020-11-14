@@ -9,7 +9,6 @@ from datetime import datetime
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(50), nullable=False)
     username = Column(String(50), nullable=False)
     password = Column(String(50), nullable=False)
     email = Column(String(50), nullable=True, unique=True)
@@ -20,7 +19,7 @@ class User(db.Model, UserMixin):
     isActive = Column(Boolean, default=True)
     isAdmin = Column(Boolean, default=False)
     def __str__(self):
-        return self.name
+        return self.username
 
 
 class Room(db.Model):
