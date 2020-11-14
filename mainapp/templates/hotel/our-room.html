@@ -2,8 +2,7 @@
 {% block title %}
     <title>Chondo Hotel | Our room</title>
 {% endblock %}
-{% import 'blocks/header.html' as header %}
-<div>{{header.breadcrumbs('Rooms')}}</div>
+{% set name = 'Rooms' %}
 {% block content %}
         <!--Room Section Title start-->
         <div class="room-section text-center ptb-80 white_bg">
