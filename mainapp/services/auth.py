@@ -9,6 +9,19 @@ def authValidate(request):
                              User.password == password).first()
     return user
 
+def registerValidate(request):
+    Username = request.form.get('Username')
+    Password = request.form.get('Password')
+    Email = request.form.get('Email')
+    Lastname = request.form.get('Lastname')
+    Firstname = request.form.get('Firstname')
+    sex = request.form.get('sex')
+    Address = request.form.get('Address')
+    user = User(username=Username, password=Password, email=Email,
+                firstname=Firstname, lastname=Lastname, address=Address, sex=sex, isActive=True,
+                isAdmin=True)
+    return user
+
 def contactValidate(request):
     name = request.form.get('name')
     email = request.form.get('email')

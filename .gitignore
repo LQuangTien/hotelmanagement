@@ -3,3 +3,8 @@
 .idea/misc.xml
 .idea/CNPM.iml
 .env
+venv
+workspace.xml
+misc.xml
+CNPM.iml
+__pycache__

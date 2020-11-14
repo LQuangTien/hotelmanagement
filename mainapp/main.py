@@ -2,7 +2,7 @@ from flask import render_template, request, redirect
 from flask_login import login_user, login_required
 from mainapp import app, login, utils, mail
 from math import ceil
-from mainapp.services.auth import authValidate, contactValidate
+from mainapp.services.auth import authValidate, contactValidate, registerValidate
 from flask_mail import Message
 login.login_view = "login"
 
@@ -63,6 +63,16 @@ def notFound(e):
     return render_template('hotel/404.html'), 404
 
 
+@app.route('/register', methods=['post', 'get'])
+def register():
+    if request.method == 'GET':
+        return render_template('hotel/register.html')
+    if request.method == 'POST':
+        user = registerValidate(request)
+        db.session.add(user)
+        db.session.commit()
+        notification = "Register successfully!"
+        return render_template('hotel/register.html', notification=notification)
 
 
 @app.route('/login', methods=['post', 'get'])
@@ -75,7 +85,8 @@ def login():
             login_user(user=user)
             return redirect('/')
         else:
-            return redirect('/login')
+            a = "Đăng nhập thất bại"
+            return render_template('hotel/login.html',a = a)
 
 @app.route('/login-admin', methods=['post', 'get'])
 def login_admin():
