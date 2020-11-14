@@ -26,11 +26,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b045cda-90df-415a-8536-267c3006790e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/CNPM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CNPM.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/.envexample" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/.envexample" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mainapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/services/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/services/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/static/css/newStyle/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/static/css/newStyle/auth.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/static/css/newStyle/register.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +200,7 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -213,12 +219,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="457" y="166" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604845427302">
@@ -233,25 +240,25 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="430" y="229" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.728@0.0.1366.728" timestamp="1604643605756" />
-    <state width="1345" height="117" key="GridCell.Tab.0.bottom" timestamp="1605345428555">
+    <state width="1345" height="122" key="GridCell.Tab.0.bottom" timestamp="1605358828210">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="117" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1605345428555" />
+    <state width="1345" height="122" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1605358828210" />
     <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605162750300" />
-    <state width="1345" height="117" key="GridCell.Tab.0.center" timestamp="1605345428554">
+    <state width="1345" height="122" key="GridCell.Tab.0.center" timestamp="1605358828209">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="117" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1605345428554" />
+    <state width="1345" height="122" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1605358828209" />
     <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605162750296" />
-    <state width="1345" height="117" key="GridCell.Tab.0.left" timestamp="1605345428554">
+    <state width="1345" height="122" key="GridCell.Tab.0.left" timestamp="1605358828209">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="117" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1605345428554" />
+    <state width="1345" height="122" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1605358828209" />
     <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605162750296" />
-    <state width="1345" height="117" key="GridCell.Tab.0.right" timestamp="1605345428554">
+    <state width="1345" height="122" key="GridCell.Tab.0.right" timestamp="1605358828209">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="117" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1605345428554" />
+    <state width="1345" height="122" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1605358828209" />
     <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605162750296" />
     <state width="1345" height="223" key="GridCell.Tab.1.bottom" timestamp="1604834978130">
       <screen x="0" y="0" width="1366" height="728" />
@@ -269,10 +276,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1345" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1604834978130" />
-    <state x="184" y="6" key="SettingsEditor" timestamp="1605336274618">
+    <state x="184" y="6" key="SettingsEditor" timestamp="1605357357368">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1605336274618" />
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1605357357368" />
     <state x="131" y="45" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1605153702701" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1604837677588">
       <screen x="0" y="0" width="1366" height="728" />

@@ -1,3 +1,5 @@
+from os import environ
+
 from flask import render_template, request, redirect
 from flask_login import login_user, login_required
 from mainapp import app, login, utils, mail
@@ -102,4 +104,4 @@ def login_admin():
 
 if __name__ == "__main__":
     from mainapp.admin_module import *
-    app.run(debug=True,port=8900)
+    app.run(debug=True,port=int(environ.get('PORT')))
