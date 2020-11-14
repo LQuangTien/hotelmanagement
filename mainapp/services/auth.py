@@ -17,10 +17,16 @@ def registerValidate(request):
     Firstname = request.form.get('Firstname')
     sex = request.form.get('sex')
     Address = request.form.get('Address')
-    user = User(username=Username, password=Password, email=Email,
-                firstname=Firstname, lastname=Lastname, address=Address, sex=sex, isActive=True,
-                isAdmin=True)
-    return user
+    # neu trung thi ko cho tao, return
+    existUsername = User.query.filter(User.username == Username.strip()).first()
+    existMail = User.query.filter(User.email == Email.strip() ).first()
+    if existUsername == None  and existMail == None :
+        Password = str(hashlib.md5(Password.strip().encode('utf-8')).hexdigest())
+        user = User(username=Username, password=Password, email=Email,
+                    firstname=Firstname, lastname=Lastname, address=Address, sex=sex, isActive=True,
+                    isAdmin=True)
+        return user
+    return None
 
 def contactValidate(request):
     name = request.form.get('name')

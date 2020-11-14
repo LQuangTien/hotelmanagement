@@ -9,7 +9,7 @@ from datetime import datetime
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    username = Column(String(50), nullable=False)
+    username = Column(String(50), nullable=False, unique=True)
     password = Column(String(50), nullable=False)
     email = Column(String(50), nullable=True, unique=True)
     firstname = Column(String(50), nullable=False)
