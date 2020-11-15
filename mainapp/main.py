@@ -57,7 +57,7 @@ def gallery():
 
 @app.route("/booking")
 def booking():
-    return render_template('hotel/room-booking.html')
+    return render_template('hotel/booking.html')
 
 
 @app.errorhandler(404)
