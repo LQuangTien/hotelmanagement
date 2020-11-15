@@ -3,30 +3,44 @@ from mainapp.models import User
 
 def authValidate(request):
     username = request.form.get('username')
+    isUsernameMatched = not not User.query.filter(User.username == username.strip()).first()
+
+    if not isUsernameMatched:
+        return None, "User not existed"
+
     password = request.form.get('password')
     password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+    isPasswordMatched = not not User.query.filter(User.password == password).first()
+
+    if not isPasswordMatched:
+        return None, "Wrong password"
+
     user = User.query.filter(User.username == username.strip(),
                              User.password == password).first()
-    return user
+    return user, ""
 
 def registerValidate(request):
-    Username = request.form.get('Username')
-    Password = request.form.get('Password')
-    Email = request.form.get('Email')
-    Lastname = request.form.get('Lastname')
-    Firstname = request.form.get('Firstname')
+    username = request.form.get('Username')
+    password = request.form.get('Password')
+    email = request.form.get('Email')
+    lastname = request.form.get('Lastname')
+    firstname = request.form.get('Firstname')
     sex = request.form.get('sex')
-    Address = request.form.get('Address')
-    # neu trung thi ko cho tao, return
-    existUsername = User.query.filter(User.username == Username.strip()).first()
-    existMail = User.query.filter(User.email == Email.strip() ).first()
-    if existUsername == None  and existMail == None :
-        Password = str(hashlib.md5(Password.strip().encode('utf-8')).hexdigest())
-        user = User(username=Username, password=Password, email=Email,
-                    firstname=Firstname, lastname=Lastname, address=Address, sex=sex, isActive=True,
-                    isAdmin=True)
-        return user
-    return None
+    address = request.form.get('Address')
+
+    isUsernameDuplicate = not not User.query.filter(User.username == username.strip()).first()
+    isMailDuplicate = not not User.query.filter(User.email == email.strip()).first()
+
+    if isUsernameDuplicate:
+        return None, "User existed"
+    if isMailDuplicate:
+        return None, "Email existed"
+
+    password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+    user = User(username=username, password=password, email=email,
+                firstname=firstname, lastname=lastname, address=address,
+                sex=sex, isActive=True, isAdmin=True)
+    return user, "Register successfully"
 
 def contactValidate(request):
     name = request.form.get('name')

@@ -1,3 +1,5 @@
+from os import environ
+
 from flask import render_template, request, redirect
 from flask_login import login_user, login_required
 from mainapp import app, login, utils, mail
@@ -55,7 +57,7 @@ def gallery():
 
 @app.route("/booking")
 def booking():
-    return render_template('hotel/room-booking.html')
+    return render_template('hotel/booking.html')
 
 
 @app.errorhandler(404)
@@ -68,14 +70,12 @@ def register():
     if request.method == 'GET':
         return render_template('hotel/register.html')
     if request.method == 'POST':
-        user = registerValidate(request)
-        if user == None:
-            notification = "Register Fail"
-            return render_template('hotel/register.html', notification=notification)
+        user, result = registerValidate(request)
+        if not user:
+            return render_template('hotel/register.html', error=result)
         db.session.add(user)
         db.session.commit()
-        notification = "Register successfully!"
-        return render_template('hotel/register.html', notification=notification)
+        return render_template('hotel/register.html', result=result)
 
 
 @app.route('/login', methods=['post', 'get'])
@@ -83,13 +83,11 @@ def login():
     if request.method == 'GET':
         return render_template('hotel/login.html')
     if request.method == 'POST':
-        user = authValidate(request)
-        if user:
-            login_user(user=user)
-            return redirect('/')
-        else:
-            notification = "login Fail"
-            return render_template('hotel/login.html',notification = notification)
+        user, error = authValidate(request)
+        if not user:
+            return render_template('hotel/login.html', error=error)
+        login_user(user=user)
+        return redirect('/')
 
 @app.route('/login-admin', methods=['post', 'get'])
 def login_admin():
@@ -102,4 +100,4 @@ def login_admin():
 
 if __name__ == "__main__":
     from mainapp.admin_module import *
-    app.run(debug=True,port=8900)
+    app.run(debug=True,port=int(environ.get('PORT')))
