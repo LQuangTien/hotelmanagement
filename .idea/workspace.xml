@@ -29,16 +29,33 @@
       <change beforePath="$PROJECT_DIR$/.idea/CNPM.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CNPM.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/mainapp/templates/blocks/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/blocks/header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/about-us.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/about-us.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/booking.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/booking.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/login.html" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/mainapp/admin_module.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/admin_module.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/services/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/services/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/admin/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/admin/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/admin/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/admin/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/base/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/templates/hotel/our-room.html" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/templates/hotel/our-room.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainapp/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainapp/utils.py" afterDir="false" />
+>>>>>>> 709b79dd1624dedfbaf98dbd8acc13e4817ccf7f
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="CNPM" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -145,27 +162,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="CNPM" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mainapp" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\Admin\Desktop\CNPM\mainapp\main.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="models" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CNPM" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -187,17 +183,45 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="utils" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CNPM" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/mainapp" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/mainapp/utils.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.models" />
+        <item itemvalue="Python.utils" />
         <item itemvalue="Python.admin_module" />
         <item itemvalue="Python.main (2)" />
-        <item itemvalue="Python.main" />
       </list>
     </recent_temporary>
   </component>
+<<<<<<< HEAD
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+=======
+  <component name="ServiceViewManager">
+    <option name="showServicesTree" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+>>>>>>> 709b79dd1624dedfbaf98dbd8acc13e4817ccf7f
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -236,6 +260,7 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="430" y="229" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1366.728@0.0.1366.728" timestamp="1604643605756" />
+<<<<<<< HEAD
     <state width="1345" height="117" key="GridCell.Tab.0.bottom" timestamp="1605441489870">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -255,23 +280,44 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1345" height="117" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1605441489870" />
+=======
+    <state width="1345" height="147" key="GridCell.Tab.0.bottom" timestamp="1605884633999">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="147" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1605884633999" />
+    <state width="1515" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1605162750300" />
+    <state width="1345" height="147" key="GridCell.Tab.0.center" timestamp="1605884633999">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="147" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1605884633999" />
+    <state width="1515" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1605162750296" />
+    <state width="1345" height="147" key="GridCell.Tab.0.left" timestamp="1605884633999">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="147" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1605884633999" />
+    <state width="1515" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1605162750296" />
+    <state width="1345" height="147" key="GridCell.Tab.0.right" timestamp="1605884633999">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1345" height="147" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1605884633999" />
+>>>>>>> 709b79dd1624dedfbaf98dbd8acc13e4817ccf7f
     <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1605162750296" />
-    <state width="1345" height="223" key="GridCell.Tab.1.bottom" timestamp="1604834978130">
+    <state width="1345" height="222" key="GridCell.Tab.1.bottom" timestamp="1605866056265">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="223" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1604834978130" />
-    <state width="1345" height="223" key="GridCell.Tab.1.center" timestamp="1604834978130">
+    <state width="1345" height="222" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1605866056265" />
+    <state width="1345" height="222" key="GridCell.Tab.1.center" timestamp="1605866056265">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="223" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1604834978130" />
-    <state width="1345" height="223" key="GridCell.Tab.1.left" timestamp="1604834978130">
+    <state width="1345" height="222" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1605866056265" />
+    <state width="1345" height="222" key="GridCell.Tab.1.left" timestamp="1605866056264">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="223" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1604834978130" />
-    <state width="1345" height="223" key="GridCell.Tab.1.right" timestamp="1604834978130">
+    <state width="1345" height="222" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1605866056264" />
+    <state width="1345" height="222" key="GridCell.Tab.1.right" timestamp="1605866056265">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1345" height="223" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1604834978130" />
+    <state width="1345" height="222" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1605866056265" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1605357357368">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -281,6 +327,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1604837677588" />
+    <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605584614820">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="492" y="280" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1605584614820" />
     <state x="245" y="93" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1604833710690">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
