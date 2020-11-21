@@ -27,24 +27,23 @@
                                     <p>There are many vars of passageson't look even slightly believable.</p>
                                 </div>
                                 <div class="booking-form">
-                                    <form action="#">
+                                    <form action="{{ url_for('rooms') }}">
                                         <div class="b-date arrive mb-15">
-                                            <input class="date-picker" type="text" placeholder="Arrive Date">
-                                            <i class="mdi mdi-calendar-text"></i>
+                                            <input  type="date" name="arriveDate">
                                         </div>
                                         <div class="b-date departure mb-15">
-                                            <input class="date-picker" type="text" placeholder="Departure Date">
-                                            <i class="mdi mdi-calendar-text"></i>
+                                            <input type="date" name="departureDate">
                                         </div>
                                         <div class="select-book mb-15">
-                                            <select name="book" class="select-booking">
-                                                <option value="" selected>Adult</option>
-                                                <option value="1">Teen</option>
-                                                <option value="1">old</option>
+                                            <select name="type" class="select-booking">
+                                                <option value="1" selected>A</option>
+                                                <option value="2">B</option>
+                                                <option value="3">C</option>
+                                                <option value="Any">Any</option>
                                             </select>
                                         </div>
                                         <div class="select-book  mb-30">
-                                            <select name="book" class="select-booking">
+                                            <select class="select-booking">
                                                 <option value="" selected>Room</option>
                                                 <option value="1">Roome 101</option>
                                                 <option value="1">Roome 102</option>

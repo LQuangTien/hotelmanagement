@@ -21,20 +21,22 @@
                             {% for page in range(0, totalPage) %}
                             <div class="single-room-sapce">
                                 {% for room in rooms[page * perPage : (page + 1) * perPage] %}
+                                {% set roomInfo = room[0] %}
+                                {% set typeInfo = room[1] %}
                                 <div class="col-md-4 col-sm-6 col-xs-12">
                                     <div class="single-room mb-80">
                                         <div class="room-img">
-                                            <a href="#"><img width="370px" height="256px" src="{{ url_for('static', filename=room.image)}}" alt=""></a>
+                                            <a href="#"><img width="370px" height="256px" src="{{ url_for('static', filename=roomInfo.image)}}" alt=""></a>
                                         </div>
                                         <div class="room-desc">
                                             <div class="room-name">
-                                                <h3><a href="#">Phòng {{room.name}} ({{room.capacity}} người)</a></h3>
+                                                <h3><a href="#">Phòng {{roomInfo.name}} ({{roomInfo.capacity}} người)</a></h3>
                                             </div>
                                             <div class="room-rent">
-                                                <h5>{{room.price}}k / <span>Một đêm</span></h5>
-                                                <h5>Giảm  còn {{room.price - 150}}k</span></h5>
+                                                <h5>Loại phòng: {{room[1].name}}</h5>
+                                                <h5>{{ "{:,}".format(typeInfo.price) }} / <span>Ngày</span></h5>
                                             </div>
-                                            {% if room.isBooked %}
+                                            {% if roomInfo.isBooked %}
                                             <div class="room-book tien">
                                                 <p>Booked</p>
                                             </div>

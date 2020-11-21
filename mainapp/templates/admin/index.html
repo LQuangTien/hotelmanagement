@@ -1,8 +1,10 @@
 {% extends 'admin/master.html' %}
 
 {% block body %}
-    {% if current_user.is_authenticated %}
-        <h1>Xin chao, {{current_user.name}}</h1>
+    {% if current_user.is_authenticated and not current_user.isAdmin %}
+        <h1>Day la trang danh cho admin, vui long ve <a href="/">trang chu</a></h1>
+    {% elif current_user.is_authenticated %}
+        <h1>Xin chao, {{current_user.username}}</h1>
     {% else %}
         {% include "admin/login.html" %}
     {% endif %}
