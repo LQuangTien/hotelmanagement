@@ -1,11 +1,13 @@
 from os import environ
 
+import flask
 from flask import render_template, request, redirect
 from flask_login import login_user, login_required
 from mainapp import app, login, utils, mail
 from math import ceil
 from mainapp.services.auth import authValidate, contactValidate, registerValidate
 from flask_mail import Message
+
 login.login_view = "login"
 
 
@@ -20,16 +22,20 @@ def index():
 
 
 @app.route("/rooms")
-@login_required
+# @login_required
 def rooms():
-    rooms = utils.getAll_room()
-    perPage = 3
-    totalPage = ceil(len(rooms)/perPage)
-    return render_template('hotel/our-room.html',
-                           rooms=rooms, totalPage=totalPage, perPage=perPage)
-
+    if request.method == 'GET':
+        typee = None if request.args.get('type') == 'Any' else request.args.get('type')
+        arriveDate = request.args.get('arriveDate')
+        departureDate = request.args.get('departureDate')
+        rooms = utils.getAll_room(typee, arriveDate, departureDate)
+        perPage = 3
+        totalPage = ceil(len(rooms)/perPage)
+        return render_template('hotel/our-room.html',
+                               rooms=rooms, totalPage=totalPage, perPage=perPage)
 
 @app.route("/aboutus")
+@login_required
 def aboutus():
     return render_template('hotel/about-us.html')
 
@@ -87,12 +93,13 @@ def login():
         if not user:
             return render_template('hotel/login.html', error=error)
         login_user(user=user)
-        return redirect('/')
+        next = request.args.get('next')
+        return redirect(next)
 
 @app.route('/login-admin', methods=['post', 'get'])
 def login_admin():
     if request.method == 'POST':
-        user = authValidate(request)
+        user,error = authValidate(request)
         if user:
             login_user(user=user)
     return redirect('/admin')
