@@ -185,7 +185,7 @@
 /*  3.  Header Css
 /*----------------------------------------*/
 .header-section{
-  background: url(images/bg/b-1.jpg)no-repeat scroll center center;
+  background: url(images/bg/b1.jpg)no-repeat scroll center center;
   background-size: cover;
 }
 .header-section.height-vh{
@@ -945,7 +945,7 @@ p.welcome-desc {
   margin-top: 51px;
 }
 .staff-tesimonial {
-  background: rgba(0, 0, 0, 0) url("images/bg/testimonial.jpg") no-repeat fixed center center / cover ;
+  background: rgba(0, 0, 0, 0) url(images/bg/testimonial1.jpg) no-repeat fixed center center / cover ;
   padding: 128px 0 138px;
   position: relative;
 }
@@ -1137,11 +1137,11 @@ h3.news-title {
   width: 25%;
 }
 .hotel-cmmunities {
-  background: rgba(0, 0, 0, 0) url("images/bg/communities.jpg") no-repeat scroll center center / cover ;
+  background: rgba(0, 0, 0, 0) url(images/bg/communities1.jpg) no-repeat scroll center center / cover ;
   position: relative;
 }
 .hotel-cmmunities.style2{
-  background: url(images/bg/1.jpg)no-repeat fixed center center;
+  background: url(images/bg/Mot.jpg)no-repeat fixed center center;
   background-size: cover
 }
 .hotel-cmmunities.style3{
@@ -1214,7 +1214,7 @@ h3.news-title {
 	15. Deafault Footer Css here
 --------------------------*/
 .footer{
-  background: url(images/bg/footer.jpg)no-repeat scroll center center;
+  background: url(images/bg/footer1.jpg)no-repeat scroll center center;
   background-size: cover;
 }
 .footer-bg-opacity {
@@ -1331,7 +1331,7 @@ h3.news-title {
    16.1 Home two Header Css here
 ----------------------------*/
 .header-section.static2{
-  background: url(images/bg/h2-bg.jpg)no-repeat scroll center center;
+  background: url(images/bg/h2bg.jpg)no-repeat scroll center center;
   background-size: cover;
 }
 .menu nav ul li.logo {
@@ -1463,7 +1463,7 @@ h3.news-title {
   margin-top: 40px;
 }
 .video-tour{
-  background: url(images/bg/video-bg.jpg)no-repeat scroll center center;
+  background: url(images/bg/video-bg1.jpg)no-repeat scroll center center;
   background-size: cover;
   position: relative
 }
@@ -1774,7 +1774,7 @@ h3.news-title {
     22.1 Home3 Css here
 ---------------------*/
 .header-section.static-3 {
-  background: url(images/bg/h2-bg.jpg)no-repeat scroll center center;  
+  background: url(images/bg/h2bg.jpg)no-repeat scroll center center;
 }
 .static-3 .welcome-section,.static4 .welcome-section {
   padding: 150px 0;
@@ -1783,7 +1783,7 @@ h3.news-title {
    22.2 Home4 Css here
 ---------------------*/
 .header-section.static4 {
- background: url(images/bg/h2-bg.jpg)no-repeat fixed center center; 
+ background: url(images/bg/h2bg.jpg)no-repeat fixed center center;
 }
 
 /*-----------------------
