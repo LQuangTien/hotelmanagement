@@ -5,6 +5,8 @@ from flask import render_template, request, redirect
 from flask_login import login_user, login_required
 from mainapp import app, login, utils, mail
 from math import ceil
+
+from mainapp.model import room
 from mainapp.services.auth import authValidate, contactValidate, registerValidate
 from flask_mail import Message
 
@@ -25,10 +27,10 @@ def index():
 # @login_required
 def rooms():
     if request.method == 'GET':
-        typee = None if request.args.get('type') == 'Any' else request.args.get('type')
+        type = None if request.args.get('type') == 'Any' else request.args.get('type')
         arriveDate = request.args.get('arriveDate')
         departureDate = request.args.get('departureDate')
-        rooms = utils.getAll_room(typee, arriveDate, departureDate)
+        rooms = room.getByQuery(type, arriveDate, departureDate) if type else room.getAll()
         perPage = 3
         totalPage = ceil(len(rooms)/perPage)
         return render_template('hotel/our-room.html',
