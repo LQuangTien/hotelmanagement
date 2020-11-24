@@ -3,13 +3,21 @@ from sqlalchemy import or_, func, not_
 from mainapp import db
 from mainapp.models import Room, RoomType, Reservation
 
-JOINED_TABLE = db.session.query(Room, RoomType, Reservation) \
-            .join(RoomType, Room.type == RoomType.id)
+
+ROOM_ROOMTYPE = db.session.query(Room, RoomType)
+ROOM_ROOMTYPE_RESERVATION = db.session.query(Room, RoomType, Reservation)
+JOINED_TABLE = ROOM_ROOMTYPE_RESERVATION.join(RoomType, Room.type == RoomType.id)
 LEFTJOINED_TABLE = JOINED_TABLE.outerjoin(Reservation, Room.id == Reservation.room)
 
 
 def getAll():
     return JOINED_TABLE.group_by(Room.id).order_by(Room.name).all()
+
+
+def get(name):
+    roomInfo, typeInfo = ROOM_ROOMTYPE.filter(Room.name == name).first()
+    return roomInfo, typeInfo
+
 
 
 def getByQuery(type=None, arriveDate=None, departureDate=None):

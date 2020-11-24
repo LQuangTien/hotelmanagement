@@ -31,13 +31,13 @@
                                 <div class="booking-info-deatils">
                                     <div class="single-room-details fix">
                                         <div class="room-img">
-                                            <img src="images/room/roob-tab.jpg" alt="">
+                                            <img src="{{url_for('static', filename=bookingInfo['image'])}}" alt="">
                                         </div>
                                         <div class="single-room-details pl-50">
-                                            <h3 class="s_room_title">SINGLE Room</h3>
+                                            <h3 class="s_room_title">Room {{bookingInfo["room"]}}</h3>
                                             <div class="room_price">
-                                                <h4>Total Price</h4>
-                                                <h5>$550 <span>/per night</span></h5>
+                                                <h4>Price</h4>
+                                                <h5>{{ "{:,}".format(bookingInfo["price"]) }} VND<span>/day</span></h5>
                                                 <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
                                             </div>
                                         </div>

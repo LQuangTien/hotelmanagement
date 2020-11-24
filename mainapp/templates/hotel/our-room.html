@@ -1,60 +1,79 @@
 {% extends 'base/base.html' %}
 {% block title %}
-    <title>Chondo Hotel | Our room</title>
+<title>Chondo Hotel | Our room</title>
 {% endblock %}
 {% set name = 'Rooms' %}
 {% block content %}
-        <!--Room Section Title start-->
-        <div class="room-section text-center ptb-80 white_bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-title mb-75">
-                            <h2>Our <span>room</span></h2>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="our-room-show">
-                    <div class="row">
-                        <div class="our-room-list owl-pagination">
-                            {% for page in range(0, totalPage) %}
-                            <div class="single-room-sapce">
-                                {% for room in rooms[page * perPage : (page + 1) * perPage] %}
-                                {% set roomInfo = room[0] %}
-                                {% set typeInfo = room[1] %}
-                                <div class="col-md-4 col-sm-6 col-xs-12">
-                                    <div class="single-room mb-80">
-                                        <div class="room-img">
-                                            <a href="#"><img width="370px" height="256px" src="{{ url_for('static', filename=roomInfo.image)}}" alt=""></a>
-                                        </div>
-                                        <div class="room-desc">
-                                            <div class="room-name">
-                                                <h3><a href="#">Phòng {{roomInfo.name}} ({{roomInfo.capacity}} người)</a></h3>
-                                            </div>
-                                            <div class="room-rent">
-                                                <h5>Loại phòng: {{room[1].name}}</h5>
-                                                <h5>{{ "{:,}".format(typeInfo.price) }} / <span>Ngày</span></h5>
-                                            </div>
-                                            {% if roomInfo.isBooked %}
-                                            <div class="room-book tien">
-                                                <p>Booked</p>
-                                            </div>
-                                            {% else %}
-                                            <div class="room-book">
-                                                <a href="#">Book now </a>
-                                            </div>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+<!--Room Section Title start-->
+<div class="room-section text-center ptb-80 white_bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-title mb-75">
+          <h2>Our <span>room</span></h2>
+          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected
+            humour.</p>
         </div>
-        <!--Room Section end-->
+      </div>
+    </div>
+    <div class="our-room-show">
+      <div class="row">
+        <div class="our-room-list owl-pagination">
+          {% for page in range(0, totalPage) %}
+          <div class="single-room-sapce">
+            {% for room in rooms[page * perPage : (page + 1) * perPage] %}
+            {% set roomInfo = room[0] %}
+            {% set typeInfo = room[1] %}
+            <form action="/booking" method="post">
+              <input type="hidden" id="roomName" name="roomName" value={{roomInfo}} >
+              <input type="hidden" id="arriveDate" name="arriveDate" value={{arriveDate}} >
+              <input type="hidden" id="departureDate" name="departureDate" value={{departureDate}} >
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="single-room mb-80">
+                  <div class="room-img">
+                    <a href="#">
+                      <img width="370px" height="256px" src="{{ url_for('static', filename=roomInfo.image)}}" alt="">
+                    </a>
+                  </div>
+                  <div class="room-desc">
+                    <div class="room-name">
+                      <h3>
+                        <a href="#">
+                          Phòng {{roomInfo.name}} ({{roomInfo.capacity}} người)
+                        </a>
+                      </h3>
+                    </div>
+                    <div class="room-rent">
+                      <h5>Loại phòng: {{typeInfo.name}}</h5>
+                      <h5>{{ "{:,}".format(typeInfo.price) }} VND<span>/day</span></h5>
+                    </div>
+                    <div class="room-book">
+                      <button>
+                        <a>Book now</a>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+            {% endfor %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Room Section end-->
+<!--<script>-->
+<!--  function onSubmit() {-->
+<!--    const room = $('#roomInfo').val()-->
+<!--    const arriveDate = $('#arriveDate').val()-->
+<!--    const departureDate = $('#departureDate').val()-->
+<!--    localStorage.setItem("bookingInfo", JSON.stringify({room, arriveDate, departureDate}))-->
+<!--  }-->
+<!--</script>-->
 {% endblock %}
+
+<!-- onclick="document.getElementById('form-{{roomInfo.name}}').submit();"-->

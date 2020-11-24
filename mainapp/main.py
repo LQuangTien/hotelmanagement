@@ -1,7 +1,7 @@
 from os import environ
 
 import flask
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, session
 from flask_login import login_user, login_required
 from mainapp import app, login, utils, mail
 from math import ceil
@@ -10,8 +10,9 @@ from mainapp.model import room
 from mainapp.services.auth import authValidate, contactValidate, registerValidate
 from flask_mail import Message
 
-login.login_view = "login"
+from mainapp.services.room import bookingRoom
 
+login.login_view = "login"
 
 @login.user_loader
 def userLoad(userId):
@@ -20,7 +21,7 @@ def userLoad(userId):
 
 @app.route("/")
 def index():
-    return render_template('hotel/index.html')
+    return render_template('hotel/index.html', error=request.args.get('error'))
 
 
 @app.route("/rooms")
@@ -30,11 +31,13 @@ def rooms():
         type = None if request.args.get('type') == 'Any' else request.args.get('type')
         arriveDate = request.args.get('arriveDate')
         departureDate = request.args.get('departureDate')
-        rooms = room.getByQuery(type, arriveDate, departureDate) if type else room.getAll()
+        rooms = room.getByQuery(type, arriveDate, departureDate)
         perPage = 3
         totalPage = ceil(len(rooms)/perPage)
         return render_template('hotel/our-room.html',
-                               rooms=rooms, totalPage=totalPage, perPage=perPage)
+                               rooms=rooms, totalPage=totalPage, perPage=perPage,
+                               arriveDate=arriveDate, departureDate=departureDate)
+
 
 @app.route("/aboutus")
 @login_required
@@ -63,9 +66,15 @@ def gallery():
     return render_template('hotel/gallery.html')
 
 
-@app.route("/booking")
+@app.route("/booking", methods=['post', 'get'])
 def booking():
-    return render_template('hotel/booking.html')
+    if request.method == 'GET':
+        if(not session.get('booking') ):
+            return redirect(url_for('index', error="Please booking room"))
+        return render_template('hotel/booking.html', bookingInfo=session.get('booking'))
+    if request.method == 'POST':
+        bookingInfo = bookingRoom(request)
+        return render_template('hotel/booking.html',bookingInfo=bookingInfo)
 
 
 @app.errorhandler(404)
