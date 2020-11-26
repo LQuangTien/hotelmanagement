@@ -11,7 +11,8 @@ load_dotenv()
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://'+ str(os.environ.get('DATABASE_USERNAME')) +':'+ str(os.environ.get('DATABASE_PASSWORD')) + '@localhost/tdmt?charset=utf8mb4'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://'+ str(os.environ.get('DATABASE_USERNAME')) +':'+ str(os.environ.get('DATABASE_PASSWORD')) + '@localhost/tdmt?charset=utf8mb4'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:123456@localhost/tdmt?charset=utf8mb4'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 app.config['MAIL_SERVER']='smtp.gmail.com'

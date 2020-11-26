@@ -40,7 +40,7 @@ def rooms():
 
 
 @app.route("/aboutus")
-@login_required
+@login_required #đăng nhập session rồi mới được vào trang này
 def aboutus():
     return render_template('hotel/about-us.html')
 
@@ -104,8 +104,9 @@ def login():
         if not user:
             return render_template('hotel/login.html', error=error)
         login_user(user=user)
-        next = request.args.get('next')
-        return redirect(next)
+        #next = request.args.get('next')
+        infouser = 'Hello, ' + user.firstname
+        return render_template('hotel/index.html', infouser=infouser)
 
 @app.route('/login-admin', methods=['post', 'get'])
 def login_admin():
