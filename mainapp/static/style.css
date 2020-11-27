@@ -2006,7 +2006,7 @@ h3.news-title {
 .booking-box1 .booking-filed input, .booking-box2 .b_date input, .booking-box3 .select_book select, .room-booking-box .select-book select, .single-form-part .name input, .single-form-part .select-option select, .single-form-part .mail input, .request-box textarea, .payment-form-list .single_form input, .single_form .select-date > select {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: 1px solid #ddd;
-  color: #b3b3b3;
+  color: #777;
   height: 40px;
   text-transform: capitalize;
 }

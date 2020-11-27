@@ -80,44 +80,25 @@
                                             <div class="booking-form-list">
                                                 <div class="single-form-part">
                                                     <div class="name mb-15">
-                                                        <input type="text" placeholder="First Name">
+                                                        <input type="text" placeholder="First Name" value="{{bookingInfo['firstname']}}">
                                                     </div>
-                                                    <div class="select-option">
-                                                        <select>
-                                                            <option value="1" selected>Smoking room</option>
-                                                            <option value="2">Kitchen</option>
-                                                            <option value="3">Bathroom</option>
-                                                        </select>
+                                                    <div class="name mb-15">
+                                                        <input type="text" placeholder="Sex" value="{{bookingInfo['sex']}}">
                                                     </div>
                                                 </div>
                                                 <div class="single-form-part">
                                                     <div class="name mb-15">
-                                                        <input type="text" placeholder="Last Name">
+                                                        <input type="text" placeholder="Last Name" value="{{bookingInfo['lastname']}}">
                                                     </div>
-                                                    <div class="select-option">
-                                                        <select>
-                                                            <option value="1" selected>parking</option>
-                                                            <option value="2">Rest house</option>
-                                                            <option value="3">Gym room</option>
-                                                        </select>
+                                                    <div class="name mb-15">
+                                                        <input type="text" placeholder="Addess" value="{{bookingInfo['address']}}">
                                                     </div>
                                                 </div>
                                                 <div class="single-form-part">
                                                     <div class="mail mb-15">
-                                                        <input type="text" placeholder="Your Email" value="Your Email">
-                                                        <i class="mdi mdi-calendar-text"></i>
-                                                    </div>
-                                                    <div class="select-option">
-                                                        <select>
-                                                            <option value="1" selected>With pet</option>
-                                                            <option value="2">with favourit</option>
-                                                            <option value="3">pet</option>
-                                                        </select>
+                                                        <input type="text" placeholder="Your Email" value="{{bookingInfo['email']}}" >
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="request-box mt-15">
-                                                <textarea placeholder="Any Specific Request"></textarea>
                                             </div>
                                             <div class="prve-next-box mt-20">
                                                 <div class="back-link">
@@ -189,22 +170,36 @@
                                     <div class="booking-done-table table-responsive text-center">
                                         <table class="table">
                                             <tr>
-                                                <td><p>1 Room <span>Five Adult & 1 child</span></p></td>
-                                                <td><p>$120 <span>Rate</span></p></td>
-                                                <td><p>5 <span>night</span></p></td>
-                                                <td><p>$550</p></td>
+                                                {% set total = bookingInfo["price"]*bookingInfo["dayTotal"] %}
+                                                <td><p>Room {{bookingInfo["room"]}}</p></td>
+                                                <td><p>{{ "{:,}".format(bookingInfo["price"]) }} VND<span>/day</span></p></td>
+                                                <td><p>{{ bookingInfo["dayTotal"] }} <span>day</span></p></td>
+                                                <td><p>{{ "{:,}".format(total) }}VND</p></td>
                                             </tr>
                                             <tr class="row2">
-                                                <td><p>tax <span>20% tax</span></p></td>
+                                                <td>
+                                                    <p>tax
+                                                        {% set tax = 1 %}
+                                                        {% if bookingInfo["hasForeigner"] == True %}
+                                                            {% set tax = 1.5 %}
+                                                            <span>50% tax (Foreigner)</span>
+                                                        {% elif bookingInfo["numberOfGuest"] == 3 %}
+                                                            {% set tax = 1.25 %}
+                                                            <span>25% tax (3 People)</span>
+                                                        {% else %}
+                                                            <span>no tax</span>
+                                                        {% endif %}
+                                                    </p>
+                                                </td>
                                                 <td></td>
                                                 <td></td>
-                                                <td><p>$90</p></td>
+                                                <td><p>{{ "{:,}".format((total*(tax -1))|int) }} VND</p></td>
                                             </tr>
                                             <tr class="row3">
                                                 <td><p>Total</p></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td><p>$640</p></td>
+                                                <td><p>{{ "{:,}".format((total*tax)|int) }}</p></td>
                                             </tr>
                                         </table>
                                     </div>
