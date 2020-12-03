@@ -1,10 +1,10 @@
-from sqlalchemy import or_, func, not_
+from sqlalchemy import or_, func, not_, and_
 
 from mainapp import db
 from mainapp.models import Room, RoomType, Reservation
 
 
-ROOM_ROOMTYPE = db.session.query(Room, RoomType)
+ROOM_ROOMTYPE = db.session.query(Room, RoomType).join(RoomType, Room.type == RoomType.id)
 ROOM_ROOMTYPE_RESERVATION = db.session.query(Room, RoomType, Reservation)
 JOINED_TABLE = ROOM_ROOMTYPE_RESERVATION.join(RoomType, Room.type == RoomType.id)
 LEFTJOINED_TABLE = JOINED_TABLE.outerjoin(Reservation, Room.id == Reservation.room)

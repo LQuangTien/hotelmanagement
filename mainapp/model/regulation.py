@@ -4,4 +4,4 @@ from mainapp import db
 from mainapp.models import Regulation
 
 def getRegulation(regulation):
-  return Regulation.query.filter(Regulation.name == regulation).first()
+  return db.session.query(Regulation).filter(Regulation.name == regulation).first()

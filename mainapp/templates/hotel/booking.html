@@ -195,13 +195,10 @@
                                             <tr class="row2">
                                                 <td>
                                                     <p>tax
-                                                        {% set tax = 1 %}
                                                         {% if bookingInfo["hasForeigner"] == True %}
-                                                            {% set tax = 1.5 %}
-                                                            <span>50% tax (Foreigner)</span>
-                                                        {% elif bookingInfo["numberOfGuest"] == 3 %}
-                                                            {% set tax = 1.25 %}
-                                                            <span>25% tax (3 People)</span>
+                                                            <span>{{ (( bookingInfo["tax"]-1 ) *100 )|int }}% tax (Foreigner)</span>
+                                                        {% elif bookingInfo["isOverCapacity"] == True %}
+                                                            <span>{{ (( bookingInfo["tax"]-1 ) *100 )|int }}% tax ( {{ bookingInfo["numberOfGuest"] }} People)</span>
                                                         {% else %}
                                                             <span>no tax</span>
                                                         {% endif %}
@@ -209,13 +206,13 @@
                                                 </td>
                                                 <td></td>
                                                 <td></td>
-                                                <td><p>{{ "{:,}".format((total*(tax -1))|int) }} VND</p></td>
+                                                <td><p>{{ "{:,}".format((total*(bookingInfo["tax"] -1.0))|int) }} VND</p></td>
                                             </tr>
                                             <tr class="row3">
                                                 <td><p>Total</p></td>
                                                 <td></td>
                                                 <td></td>
-                                                <td><p>{{ "{:,}".format((total*tax)|int) }} VND</p></td>
+                                                <td><p>{{ "{:,}".format((total*bookingInfo["tax"])|int) }} VND</p></td>
                                             </tr>
                                         </table>
                                     </div>
