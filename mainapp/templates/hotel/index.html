@@ -29,20 +29,32 @@
                                 </div>
                                 <div class="booking-form">
                                     <form action="{{ url_for('rooms') }}">
+                                        <label class="booking-label" for="arriveDate">Arrive Date</label>
                                         <div class="b-date arrive mb-15">
-                                            <input  type="date" name="arriveDate">
+                                            <input id="arriveDate" type="date" name="arriveDate">
                                         </div>
+                                        <label class="booking-label" for="departureDate">Departure Date</label>
                                         <div class="b-date departure mb-15">
-                                            <input type="date" name="departureDate">
+                                            <input id="departureDate" type="date" name="departureDate">
                                         </div>
+                                        <label class="booking-label" for="type">Room type</label>
                                         <div class="select-book mb-15">
-                                            <select name="type" class="select-booking">
-                                                <option value="1" selected>A</option>
+                                            <select id="type" name="type" class="select-booking">
+                                                <option value="1">A</option>
                                                 <option value="2">B</option>
                                                 <option value="3">C</option>
                                                 <option value="Any">Any</option>
                                             </select>
                                         </div>
+                                        <label class="booking-label" for="numberOfGuest">Number of guest</label>
+                                        <div class="select-book mb-15">
+                                            <select id="numberOfGuest" name="numberOfGuest" class="select-booking" >
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <label id="hasForeignerInput" class="booking-label mb-15" for="hasForeigner">Has foreinger ? <input id="hasForeigner" type="checkbox" name="hasForeigner" value="True"></label>
                                         <div class="submit-form">
                                             <button type="submit">Check Availability</button>
                                         </div>
@@ -74,29 +86,6 @@
             </div>
         </div>
         <!-- Header section end -->
-        <!-- searchbar Start -->
-            <div class="search-bar animated slideOutUp">
-                <div class="table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-8 col-sm-offset-2">
-                                    <div class="search-form-wrap">
-                                        <button class="close-search"><i class="mdi mdi-close"></i></button>
-                                        <form action="#">
-                                            <input type="text" placeholder="Search here..." value="Search here..."/>
-                                            <button class="search-button" type="submit">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <!-- search bar End -->
         <!--About Section Title start-->
         <div class="about-section text-center ptb-80 white_bg">
             <div class="container">
@@ -110,7 +99,7 @@
                     <div class="col-md-12">
                         <div class="about-chondo">
                             <div class="about-member">
-                                <img src="images/about.jpg" alt="">
+                                <img src="{{ url_for('static', filename='images/staff/about.jpg') }}" alt="">
                                 <h3>Mohin patwary</h3>
                                 <h5 class="mb-0">hrd head</h5>
                             </div>
@@ -302,106 +291,6 @@
             </div>
         </div>
         <!--Our room end-->
-        <!--Our services start-->
-        <div class="our-sevices text-center ptb-80 white_bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-title mb-80">
-                            <h2>our <span>services</span></h2>
-                            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="our-services-list">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="single-services">
-                                <div class="services-img">
-                                    <img src="images/services/services1.jpg" alt="">
-                                    <div class="services-title">
-                                        <h2>Breakfast & Buffet</h2>
-                                    </div>
-                                    <div class="services-hover-desc">
-                                        <div class="services-hover-inner">
-                                            <div class="services-hover-table">
-                                                <div class="services-hover-table-cell">
-                                                    <h2>Breakfast & Buffet</h2>
-                                                    <p>There are many variations of passages Loem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="single-services">
-                                <div class="services-img">
-                                    <img src="images/services/services2.jpg" alt="">
-                                    <div class="services-title">
-                                        <h2>Towels and bedding</h2>
-                                    </div>
-                                    <div class="services-hover-desc">
-                                        <div class="services-hover-inner">
-                                            <div class="services-hover-table">
-                                                <div class="services-hover-table-cell">
-                                                    <h2>Breakfast & Buffet</h2>
-                                                    <p>There are many variations of passages Loem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="single-services">
-                                <div class="services-img">
-                                    <img src="images/services/services3.jpg" alt="">
-                                    <div class="services-title">
-                                        <h2>24/7 Reception</h2>
-                                    </div>
-                                    <div class="services-hover-desc">
-                                        <div class="services-hover-inner">
-                                            <div class="services-hover-table">
-                                                <div class="services-hover-table-cell">
-                                                    <h2>24/7 Reception</h2>
-                                                    <p>There are many variations of passages Loem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="single-services">
-                                <div class="services-img">
-                                    <img src="images/services/services4.jpg" alt="">
-                                    <div class="services-title">
-                                        <h2>City Tours</h2>
-                                    </div>
-                                    <div class="services-hover-desc">
-                                        <div class="services-hover-inner">
-                                            <div class="services-hover-table">
-                                                <div class="services-hover-table-cell">
-                                                    <h2>City Tourst</h2>
-                                                    <p>There are many variations of passages Loem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--Our services end-->
         <!--Our staff start-->
         <div class="our-staff text-center pb-80 white_bg">
             <div class="container">
@@ -419,7 +308,7 @@
                             <div class="col-md-4">
                                 <div class="single-staff">
                                     <div class="sraff-inner">
-                                        <img src="images/staff/staff1.jpg" alt="">
+                                        <img src="{{url_for('static', filename='images/staff/staff1.jpg') }}" alt="">
                                         <div class="staff-title">
                                             <span class="plus"></span>
                                             <h2>Soleman</h2>
@@ -443,7 +332,7 @@
                             <div class="col-md-4">
                                 <div class="single-staff">
                                     <div class="sraff-inner">
-                                        <img src="images/staff/staff2.jpg" alt="">
+                                        <img src="{{url_for('static', filename='images/staff/staff2.jpg')}}" alt="">
                                         <div class="staff-title">
                                             <span class="plus"></span>
                                             <h2>Soleman</h2>
@@ -467,7 +356,7 @@
                             <div class="col-md-4">
                                 <div class="single-staff">
                                     <div class="sraff-inner">
-                                        <img src="images/staff/staff3.jpg" alt="">
+                                        <img src="{{url_for('static', filename='images/staff/staff3.jpg')}}" alt="">
                                         <div class="staff-title">
                                             <span class="plus"></span>
                                             <h2>Soleman</h2>
@@ -491,7 +380,7 @@
                             <div class="col-md-4">
                                 <div class="single-staff">
                                     <div class="sraff-inner">
-                                        <img src="images/staff/staff1.jpg" alt="">
+                                        <img src="{{url_for('static', filename='images/staff/staff1.jpg')}}" alt="">
                                         <div class="staff-title">
                                             <span class="plus"></span>
                                             <h2>Soleman</h2>

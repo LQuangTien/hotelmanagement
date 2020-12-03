@@ -2,7 +2,7 @@ from os import environ
 
 import flask
 from flask import render_template, request, redirect, session
-from flask_login import login_user, login_required
+from flask_login import login_user, login_required,logout_user
 from mainapp import app, login, utils, mail
 from math import ceil
 
@@ -12,6 +12,7 @@ from mainapp.services.auth import authValidate, contactValidate, registerValidat
 from flask_mail import Message
 
 from mainapp.services.room import bookingRoom
+from mainapp.utils import handleNextUrl
 
 login.login_view = "login"
 
@@ -26,7 +27,6 @@ def index():
 
 
 @app.route("/rooms")
-# @login_required
 def rooms():
     if request.method == 'GET':
         type = None if request.args.get('type') == 'Any' else request.args.get('type')
@@ -35,10 +35,26 @@ def rooms():
         rooms = room.getByQuery(type, arriveDate, departureDate)
         perPage = 3
         totalPage = ceil(len(rooms)/perPage)
+        numberOfGuest = int(request.args.get("numberOfGuest"))
+        hasForeigner = request.args.get("hasForeigner")
+        hasForeigner = True if hasForeigner == 'True' else False
+        session['bookForm'] = {
+            "arriveDate": arriveDate,
+            "departureDate": departureDate,
+            "numberOfGuest": numberOfGuest,
+            "hasForeigner": hasForeigner,
+            "type": type,
+        }
         return render_template('hotel/our-room.html',
                                rooms=rooms, totalPage=totalPage, perPage=perPage,
                                arriveDate=arriveDate, departureDate=departureDate)
-
+@app.route("/our-rooms")
+def ourRooms():
+    if request.method == 'GET':
+        rooms = room.getAll()
+        perPage = 3
+        totalPage = ceil(len(rooms)/perPage)
+        return render_template('hotel/our-room.html',rooms=rooms, totalPage=totalPage, perPage=perPage)
 
 @app.route("/aboutus")
 @login_required
@@ -68,11 +84,10 @@ def gallery():
 
 
 @app.route("/booking", methods=['post', 'get'])
+@login_required
 def booking():
     if request.method == 'GET':
-        if(not session.get('booking') ):
-            return redirect(url_for('index', error="Please booking room"))
-        return render_template('hotel/booking.html', bookingInfo=session.get('booking'))
+        return render_template('hotel/booking.html')
     if request.method == 'POST':
         bookingInfo = bookingRoom(request)
         return render_template('hotel/booking.html',bookingInfo=bookingInfo)
@@ -105,8 +120,16 @@ def login():
         if not user:
             return render_template('hotel/login.html', error=error)
         login_user(user=user)
-        next = request.args.get('next')
+        session['user'] = user.id
+        next = handleNextUrl(request)
         return redirect(next)
+
+
+@app.route('/logout', methods=['post', 'get'])
+def logout():
+    if request.method == 'GET':
+        logout_user()
+        return redirect('/')
 
 @app.route('/login-admin', methods=['post', 'get'])
 def login_admin():
