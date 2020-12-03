@@ -63,6 +63,16 @@ class Reservation(db.Model):
     def __str__(self):
         return str(self.id) + '_' + str(self.room)
 
+class Regulation(db.Model):
+    __tablename__ = 'regulation'
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    name = Column(String(100), nullable=False, unique=True)
+    value = Column(Integer, nullable=False)
+
+    def __str__(self):
+        return str(self.name)
+
 
 if __name__ == '__main__':
     db.create_all()

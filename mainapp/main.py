@@ -7,6 +7,7 @@ from mainapp import app, login, utils, mail
 from math import ceil
 
 from mainapp.model import room
+from mainapp.model.regulation import getRegulation
 from mainapp.services.auth import authValidate, contactValidate, registerValidate
 from flask_mail import Message
 
