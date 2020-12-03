@@ -1,20 +1,27 @@
-.room-desc .room-book p, .static2 .services-desc-inner .room-book > p {
-  display: inline-block;
-  font-size: 14px;
-  padding: 4px 20px;
-  text-transform: uppercase;
+.booking-label {
+  color: #fff;
+  display: block;
 }
-.room-desc .room-book p {
-  font-family: "Montserrat",sans-serif;
-  font-weight: 400;
+#hasForeigner {
+ width: 28px;
+ height: 28px;
+ margin-left: 5%;
 }
-.room-desc .room-book p,.static2 .services-desc-inner .room-book > p:hover {
-    background: #bbb none repeat scroll 0 0;
-    color: #fff;
+#hasForeignerInput{
+  display: flex;
+  align-items: center;
 }
-.room-desc .room-book p:hover,.static2 .services-desc-inner .room-book > p {
-    cursor: pointer;
-    transition: all 0.4s;
-    background: #ccc none repeat scroll 0 0;
-    color: #fff
+.auth {
+  float: right;
+}
+.auth span {
+  font-weight: 600;
+  margin-left: 4px;
+}
+.thanhnav {
+  display: block;
+  width: 90%;
+}
+#arriveDate, #departureDate {
+ border: 1px solid white;
 }
