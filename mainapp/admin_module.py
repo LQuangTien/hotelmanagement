@@ -4,7 +4,7 @@ from flask_login import logout_user, current_user
 from werkzeug.utils import redirect
 
 from mainapp import admin, db
-from mainapp.models import User, Room, RoomType, Reservation
+from mainapp.models import User, Room, RoomType, Reservation, Regulation
 from flask_admin.contrib.sqla import ModelView
 
 
@@ -44,6 +44,7 @@ class userView(AuthenticatedView):
 admin.add_view(userView(User, db.session))
 admin.add_view(AuthenticatedView(Room, db.session))
 admin.add_view(AuthenticatedView(RoomType, db.session))
+admin.add_view(AuthenticatedView(Regulation, db.session))
 admin.add_view(AuthenticatedView(Reservation, db.session))
 admin.add_view(aboutUsView(name='About us'))
 admin.add_view(logoutView(name='Logout'))
