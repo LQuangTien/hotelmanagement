@@ -2,7 +2,7 @@ from os import environ
 
 import flask
 from flask import render_template, request, redirect, session
-from flask_login import login_user, login_required
+from flask_login import login_user, login_required,logout_user
 from mainapp import app, login, utils, mail
 from math import ceil
 
@@ -42,12 +42,18 @@ def rooms():
             "departureDate": departureDate,
             "numberOfGuest": numberOfGuest,
             "hasForeigner": hasForeigner,
-            "type": type
+            "type": type,
         }
         return render_template('hotel/our-room.html',
                                rooms=rooms, totalPage=totalPage, perPage=perPage,
                                arriveDate=arriveDate, departureDate=departureDate)
-
+@app.route("/our-rooms")
+def ourRooms():
+    if request.method == 'GET':
+        rooms = room.getAll()
+        perPage = 3
+        totalPage = ceil(len(rooms)/perPage)
+        return render_template('hotel/our-room.html',rooms=rooms, totalPage=totalPage, perPage=perPage)
 
 @app.route("/aboutus")
 @login_required
@@ -116,6 +122,13 @@ def login():
         session['user'] = user.id
         next = handleNextUrl(request)
         return redirect(next)
+
+
+@app.route('/logout', methods=['post', 'get'])
+def logout():
+    if request.method == 'GET':
+        logout_user()
+        return redirect('/')
 
 @app.route('/login-admin', methods=['post', 'get'])
 def login_admin():

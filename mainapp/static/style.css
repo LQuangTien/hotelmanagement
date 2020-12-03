@@ -315,8 +315,8 @@
 
 .select-book select,.select-book button.btn {
   -moz-appearance: none;
-  background: rgba(83, 152, 178, 0.5) none repeat scroll 0 0;
-  border-color: transparent;
+  background: transparent;
+  border-color: white;
   position: relative;
   text-transform: capitalize;
 }
@@ -2193,8 +2193,9 @@ h3.news-title {
 }
 .booking_form_inner .single-form-part {
   display: inline-block;
-  padding-left: 18px;
-  width: 33%;
+  padding-left: 0;
+  width: 30%;
+  margin-right: 3%;
 }
 .booking_form_inner .single-form-part:first-child {
     padding-left: 0;
