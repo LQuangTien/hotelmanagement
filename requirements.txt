@@ -1,3 +1,4 @@
+pychartjs
 blinker==1.4
 click==7.1.2
 Flask==1.1.2
