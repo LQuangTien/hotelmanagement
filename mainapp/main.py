@@ -62,8 +62,6 @@ def aboutus():
     return render_template('hotel/about-us.html')
 
 
-
-
 @app.route("/contact", methods=['post', 'get'])
 def contact():
     if request.method == 'GET':

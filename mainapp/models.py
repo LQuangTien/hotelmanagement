@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
     sex = Column(Enum('Male', 'Female', 'Other'))
     isActive = Column(Boolean, default=True)
     isAdmin = Column(Boolean, default=False)
+    reservationId = relationship('Reservation', backref='User', lazy=True)
 
     def __str__(self):
         return self.username
@@ -45,7 +46,7 @@ class Room(db.Model):
     description = Column(String(1000), nullable=True)
     type = Column(Integer, ForeignKey(RoomType.id), nullable=False)
     isBooked = Column(Boolean, default=False)
-    reservation = relationship('Reservation', backref='reservation', lazy=True)
+    reservation = relationship('Reservation', backref='Room', lazy=True)
 
     def __str__(self):
         return str(self.name)
@@ -56,9 +57,15 @@ class Reservation(db.Model):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     room = Column(Integer, ForeignKey(Room.id), nullable=False)
+    user = Column(Integer, ForeignKey(User.id), nullable=False)
     arriveDate = Column(Date, nullable=False)
     departureDate = Column(Date, nullable=False)
-    people = Column(Enum('1', '2', '3'))
+    dayTotal = Column(Integer, nullable=False)
+    numberOfGuest = Column(Integer, nullable=False)
+    hasForeigner = Column(Boolean, nullable=False)
+    isOverCapacity = Column(Boolean, nullable=False)
+    tax = Column(Float, nullable=False)
+    total = Column(Float, nullable=False)
 
     def __str__(self):
         return str(self.id) + '_' + str(self.room)

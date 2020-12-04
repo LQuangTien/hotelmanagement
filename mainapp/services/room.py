@@ -5,11 +5,14 @@ from mainapp.model.regulation import getRegulation
 from mainapp.utils import subtractDate
 
 SECONDS_IN_ONE_DAY = 60*60*24
-LIMIT_CAPACITY = getRegulation('limitCapacity')
-SURCHARGE_CAPACITY = getRegulation('surchargeCapacity')
-SURCHARGE_FOREIGNER = getRegulation('surchargeForeigner')
+
 
 def bookingRoom(request):
+
+  LIMIT_CAPACITY = getRegulation('limitCapacity')
+  SURCHARGE_CAPACITY = getRegulation('surchargeCapacity')
+  SURCHARGE_FOREIGNER = getRegulation('surchargeForeigner')
+
   roomName = int(request.form.get("roomName"))
   roomInfo, typeInfo = room.get(roomName)
   userId = session.get('user')
