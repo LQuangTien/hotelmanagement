@@ -31,7 +31,7 @@
                                 <div class="booking-info-deatils">
                                     <div class="single-room-details fix">
                                         <div class="room-img">
-                                            <img src="{{url_for('static', filename=bookingInfo['image'])}}" alt="">
+                                            <img src="{{ url_for( 'static', filename=bookingInfo['image'] ) }}" alt="">
                                         </div>
                                         <div class="single-room-details pl-50">
                                             <h3 class="s_room_title">Room {{bookingInfo["room"]}}</h3>
@@ -219,7 +219,7 @@
                                     <div class="booking-done-description">
                                         <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
                                         <div class="succesfully">
-                                            <strong>Your reservation was succefully submited!!</strong>
+                                            <strong><a href="{{qrURL}}">Payment</a></strong>
                                         </div>
                                     </div>
                                 </div>

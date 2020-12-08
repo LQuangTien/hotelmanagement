@@ -30,7 +30,6 @@ def bookingRoom(request):
   elif(int(numberOfGuest) > LIMIT_CAPACITY.value):
     tax=SURCHARGE_CAPACITY.value
     isOverCapacity= True
-
   session['booking'] = {
     "tax": tax,
     "room": roomInfo.name,
