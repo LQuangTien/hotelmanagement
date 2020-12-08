@@ -78,4 +78,3 @@ function backused() {
   $('#usedYear').val(usedYear)
   $('#formDate').submit()
 }
-

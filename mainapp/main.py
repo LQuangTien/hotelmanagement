@@ -7,7 +7,6 @@ from mainapp import app, login, utils, mail
 from math import ceil
 
 from mainapp.model import room
-from mainapp.model.regulation import getRegulation
 from mainapp.services.auth import authValidate, contactValidate, registerValidate
 from flask_mail import Message
 
@@ -21,9 +20,13 @@ def userLoad(userId):
     return User.query.get(userId)
 
 
-@app.route("/")
+@app.route("/", methods=['post', 'get'])
 def index():
-    return render_template('hotel/index.html', error=request.args.get('error'))
+    if request.method == 'GET':
+        return render_template('hotel/index.html', error=request.args.get('error'))
+    if request.method == 'POST':
+        print(request)
+        return render_template('hotel/index.html')
 
 
 @app.route("/rooms")
@@ -88,7 +91,9 @@ def booking():
         return render_template('hotel/booking.html')
     if request.method == 'POST':
         bookingInfo = bookingRoom(request)
-        return render_template('hotel/booking.html',bookingInfo=bookingInfo)
+        amount = float(bookingInfo['tax']) * int(bookingInfo['price']) * int(bookingInfo['dayTotal'])
+        qrURL = utils.createQRCode(int(amount))
+        return render_template('hotel/booking.html',bookingInfo=bookingInfo, qrURL=qrURL)
 
 
 @app.errorhandler(404)
