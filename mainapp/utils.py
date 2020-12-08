@@ -11,7 +11,6 @@ def subtractDate(firstDateString, seccondDateString):
   result = datetime.strptime(firstDateString, '%Y-%m-%d') - datetime.strptime(seccondDateString, '%Y-%m-%d')
   return result.total_seconds()
 
-
 def handleNextUrl(request):
   if not request:
     return None
