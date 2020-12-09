@@ -27,11 +27,11 @@ def getByQuery(type=None, arriveDate=None, departureDate=None):
             )
     )
 
-    result = LEFTJOINED_TABLE.filter(
+    result = ROOM_ROOMTYPE.filter(
         (Room.type == type),
         Room.id.notin_(bookedRoomBasedOnTime)
     ) \
         if type \
-        else LEFTJOINED_TABLE.filter(Room.id.notin_(bookedRoomBasedOnTime))
+        else ROOM_ROOMTYPE.filter(Room.id.notin_(bookedRoomBasedOnTime))
 
     return result.group_by(Room.id).all()

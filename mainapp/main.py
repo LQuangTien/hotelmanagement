@@ -10,6 +10,7 @@ from mainapp.model import room
 from mainapp.services.auth import authValidate, contactValidate, registerValidate
 from flask_mail import Message
 
+from mainapp.services import reservation
 from mainapp.services.room import bookingRoom
 from mainapp.utils import handleNextUrl
 
@@ -88,11 +89,23 @@ def gallery():
 @login_required
 def booking():
     if request.method == 'GET':
-        return render_template('hotel/booking.html')
+        bookingInfo = session.get('booking')
+        if(not bookingInfo):
+            return redirect('/')
+        qrURL = bookingInfo['qrURL'] or None
+        errorCode =  request.args.get('errorCode') or None
+        if(errorCode):
+            bookingInfo['isDone'] = True
+        if(bookingInfo['isDone']):
+            reservation.create(bookingInfo)
+
+            session['booking'] = None
+        return render_template('hotel/booking.html', bookingInfo=bookingInfo, qrURL=qrURL, errorCode=errorCode)
     if request.method == 'POST':
         bookingInfo = bookingRoom(request)
-        amount = float(bookingInfo['tax']) * int(bookingInfo['price']) * int(bookingInfo['dayTotal'])
+        amount = float(bookingInfo['tax']) * bookingInfo['price'] * bookingInfo['dayTotal']
         qrURL = utils.createQRCode(int(amount))
+        session['booking']['qrURL'] = qrURL
         return render_template('hotel/booking.html',bookingInfo=bookingInfo, qrURL=qrURL)
 
 

@@ -1,4 +1,6 @@
-from flask import session
+import json
+
+from flask import session, jsonify
 from datetime import datetime
 from mainapp.model import room, user
 from mainapp.model.regulation import getRegulation
@@ -33,6 +35,7 @@ def bookingRoom(request):
   session['booking'] = {
     "tax": tax,
     "room": roomInfo.name,
+    "roomId": roomInfo.id,
     "sex": currentUser.sex,
     "image": roomInfo.image,
     "price": typeInfo.price,
@@ -46,5 +49,6 @@ def bookingRoom(request):
     "departureDate": departureDate,
     "lastname": currentUser.lastname,
     "firstname": currentUser.firstname,
+    "isDone": False
   }
   return session['booking']

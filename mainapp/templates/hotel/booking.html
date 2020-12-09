@@ -19,10 +19,10 @@
                 <div class="col-md-12">
                     <div class="booking-rooms-tab">
                         <ul class="nav" role="tablist">
-                            <li  class="active"><a href="#booking" data-toggle="tab"><span class="tab-border">1</span><span>Booking Info</span></a></li>
+                            <li><a href="#booking" data-toggle="tab"><span class="tab-border">1</span><span>Booking Info</span></a></li>
                             <li><a href="#personal" data-toggle="tab"><span class="tab-border">2</span><span>Personal Info</span></a></li>
                             <li><a href="#payment" data-toggle="tab"><span class="tab-border">3</span><span>payment Info</span></a></li>
-                            <li><a href="#done" data-toggle="tab"><span class="tab-border">4</span><span>Booking Done</span></a></li>
+                            <li><a id="test" href="#done" data-toggle="tab"><span class="tab-border">4</span><span>Booking Done</span></a></li>
                         </ul>
                     </div>
                     <div class="service-tab-desc text-left mt-60">
@@ -38,7 +38,7 @@
                                             <div class="room_price">
                                                 <h4>Price</h4>
                                                 <h5>{{ "{:,}".format(bookingInfo["price"]) }} VND<span>/day</span></h5>
-                                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
+                                                <p>{{ bookingInfo["a"] }} There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
                                             </div>
                                         </div>
                                     </div>
@@ -127,61 +127,6 @@
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="payment">
-                                <div class="payment-info">
-                                    <form action="#">
-                                        <div class="payment-form">
-                                            <div class="payment-form-list">
-                                                <div class="single_form">
-                                                    <input type="text" placeholder="Card Holder Name">
-                                                </div>
-                                                <div class="single_form">
-                                                    <input type="text" placeholder="Enter Creadit Card Number">
-                                                </div>
-                                                <div class="single_form">
-                                                    <div class="select-date">
-                                                        <select>
-                                                            <option value="1" selected>Enter Month</option>
-                                                            <option value="1">January</option>
-                                                            <option value="1">February</option>
-                                                            <option value="1">March</option>
-                                                            <option value="1">April</option>
-                                                            <option value="1">May</option>
-                                                            <option value="1">June</option>
-                                                            <option value="1">July</option>
-                                                            <option value="1">August</option>
-                                                            <option value="1">September</option>
-                                                            <option value="1">October</option>
-                                                            <option value="1">NOvember</option>
-                                                            <option value="1">December</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="single_form">
-                                                    <div class="select-date">
-                                                        <select>
-                                                            <option value="1" selected>Enter Year</option>
-                                                            <option value="1">2017</option>
-                                                            <option value="1">2018</option>
-                                                            <option value="1">2019</option>
-                                                            <option value="1">2020</option>
-                                                            <option value="1">2021</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="pay-money-form mt-40">
-                                                <div class="payment-card">
-                                                    <a href="#"><img src="images/logo/pay-card.png" alt=""></a>
-                                                </div>
-                                                <div class="pay-order">
-                                                    <button type="submit">Pay now</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="done">
                                 <div class="booking-done">
                                     <div class="booking-done-table table-responsive text-center">
                                         <table class="table">
@@ -224,6 +169,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <div role="tabpanel" class="tab-pane" id="done">
+                                <div class="booking-done">
+                                    <div class="booking-done-description">
+                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                                        <div class="succesfully">
+                                            {% if errorCode == "0" %}
+                                                <p>Thanh cong</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -231,5 +188,14 @@
         </div>
     </div>
      <!--Room booking end-->
+    {% block script %}
+    <script>
+        if('{{ errorCode }}' == '0'){
+            $('ul.nav li:last-child>a').click()
+        } else {
+            $('ul.nav li:first-child>a').click()
+        }
+    </script>
+    {%endblock%}
 {% endblock %}
 

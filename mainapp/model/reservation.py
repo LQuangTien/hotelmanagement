@@ -1,5 +1,6 @@
 from sqlalchemy import and_
 
+from mainapp import db
 from mainapp.models import Reservation
 
 def getByDate(start_date, end_date):
@@ -11,3 +12,11 @@ def getByDate(start_date, end_date):
 
 def getAll():
   return Reservation.query.all()
+
+def create(reservationData):
+  reservation = Reservation(room=reservationData['room'], user=reservationData['user'], arriveDate=reservationData['arriveDate'],
+              departureDate=reservationData['departureDate'], dayTotal=reservationData['dayTotal'], numberOfGuest=reservationData['numberOfGuest'],
+              hasForeigner=reservationData['hasForeigner'], isOverCapacity=reservationData['isOverCapacity'], tax=reservationData['tax'], total=reservationData['total'])
+  db.session.add(reservation)
+  db.session.commit()
+  return reservation
