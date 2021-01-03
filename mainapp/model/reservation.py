@@ -3,6 +3,10 @@ from sqlalchemy import and_
 from mainapp import db
 from mainapp.models import Reservation
 
+def getByUserId(userId):
+  return Reservation.query.filter(Reservation.user == userId).order_by(Reservation.arriveDate).all()
+
+
 def getByDate(start_date, end_date):
   return Reservation.query.filter(
       and_(Reservation.arriveDate >= start_date, Reservation.arriveDate <= end_date),

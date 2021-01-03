@@ -3,8 +3,6 @@ import random
 import datetime
 import calendar
 from mainapp.model import reservation, roomtype
-from mainapp.models import Reservation
-
 
 class MyBarGraph(BaseChart):
   type = ChartType.Doughnut
@@ -38,7 +36,6 @@ class MyBarGraph(BaseChart):
 def getReservationByQuery(input, month, year):
   start_date, end_date = getMonthRange(month, year)
   reservations = reservation.getByDate(start_date, end_date)
-  # reservations = Reservation.query.all()
 
   types = [type.name for type in roomtype.getAll()]
   result = [0 for i in range(0, len(types))]

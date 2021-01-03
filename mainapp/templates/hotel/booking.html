@@ -11,7 +11,6 @@
                 <div class="col-md-12">
                     <div class="section-title mb-80 text-center">
                         <h2>Booking <span>rooms</span></h2>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected humour.</p>
                     </div>
                 </div>
             </div>
@@ -38,13 +37,13 @@
                                             <div class="room_price">
                                                 <h4>Price</h4>
                                                 <h5>{{ "{:,}".format(bookingInfo["price"]) }} VND<span>/day</span></h5>
-                                                <p>{{ bookingInfo["a"] }} There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</p>
+                                                <p>SỬA CÁI NỘI DUNG NÀY LẠI</p>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="single-room-booking-form mt-60">
                                         <div class="booking_form_inner">
-                                            <form action="#">
+                                            <form action="{{ url_for('rooms') }}">
                                                 <div class="single-form-part">
                                                     <label for="arriveDate" class="booking-label">Arrive Date</label>
                                                     <div class="date-to mb-20">
@@ -74,8 +73,8 @@
                                                 <div class="single-form-part custom-part">
                                                     <label for="departureDate" class="booking-label">Number of guest</label>
                                                     <div class="select-book mb-20">
-                                                        <select name="type" class="select-booking">
-                                                            <option value="1" selected>One</option>
+                                                        <select name="numberOfGuest" class="select-booking">
+                                                            <option value="1">One</option>
                                                             <option value="2">Two</option>
                                                             <option value="3">Three</option>
                                                         </select>
@@ -115,12 +114,6 @@
                                                         <input type="text" placeholder="Your Email" value="{{bookingInfo['email']}}" >
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="prve-next-box mt-20">
-                                                <div class="back-link">
-                                                    <a href="#">Back</a>
-                                                </div>
-                                                <button type="submit">Next</button>
                                             </div>
                                        </form>
                                     </div>
@@ -162,7 +155,7 @@
                                         </table>
                                     </div>
                                     <div class="booking-done-description">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                                        <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI</p>
                                         <div class="succesfully">
                                             <strong><a href="{{qrURL}}">Payment</a></strong>
                                         </div>
@@ -172,10 +165,10 @@
                             <div role="tabpanel" class="tab-pane" id="done">
                                 <div class="booking-done">
                                     <div class="booking-done-description">
-                                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour</p>
+                                        <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI</p>
                                         <div class="succesfully">
                                             {% if errorCode == "0" %}
-                                                <p>Thanh cong</p>
+                                                <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI CHO VIỆC THÔNG BÁO THANH TOÁN THÀNH CÔNG</p>
                                             {% endif %}
                                         </div>
                                     </div>

@@ -1,18 +1,10 @@
 from os import environ
-
-import flask
-from flask import render_template, request, redirect, session
-from flask_login import login_user, login_required,logout_user
-from mainapp import app, login, utils, mail
-from math import ceil
-
-from mainapp.model import room
-from mainapp.services.auth import authValidate, contactValidate, registerValidate
+from mainapp.model import room, reservation
 from flask_mail import Message
-
-from mainapp.services import reservation
-from mainapp.services.room import bookingRoom
-from mainapp.utils import handleNextUrl
+from flask import render_template, session
+from mainapp import app, login, utils, mail
+from flask_login import login_user, login_required
+from mainapp.services import auth, room as roomService
 
 login.login_view = "login"
 
@@ -24,41 +16,28 @@ def userLoad(userId):
 @app.route("/", methods=['post', 'get'])
 def index():
     if request.method == 'GET':
-        return render_template('hotel/index.html', error=request.args.get('error'))
-    if request.method == 'POST':
-        print(request)
-        return render_template('hotel/index.html')
+        rooms = room.getAll()
+        return render_template('hotel/index.html', error=request.args.get('error'), rooms=rooms)
+
+
+@app.route("/history")
+def history():
+    a = reservation.getByUserId(1)
+    return render_template('hotel/history.html', reservations=a)
 
 
 @app.route("/rooms")
 def rooms():
     if request.method == 'GET':
-        type = None if request.args.get('type') == 'Any' else request.args.get('type')
-        arriveDate = request.args.get('arriveDate')
-        departureDate = request.args.get('departureDate')
-        rooms = room.getByQuery(type, arriveDate, departureDate)
-        perPage = 3
-        totalPage = ceil(len(rooms)/perPage)
-        numberOfGuest = int(request.args.get("numberOfGuest"))
-        hasForeigner = request.args.get("hasForeigner")
-        hasForeigner = True if hasForeigner == 'True' else False
-        session['bookForm'] = {
-            "arriveDate": arriveDate,
-            "departureDate": departureDate,
-            "numberOfGuest": numberOfGuest,
-            "hasForeigner": hasForeigner,
-            "type": type,
-        }
+        type, arriveDate, departureDate = roomService.handleGetRooms(request)
+        rooms, perPage, totalPage = roomService.getByDate(type, arriveDate, departureDate)
         return render_template('hotel/our-room.html',
-                               rooms=rooms, totalPage=totalPage, perPage=perPage,
-                               arriveDate=arriveDate, departureDate=departureDate)
+                               rooms=rooms, totalPage=totalPage, perPage=perPage)
 @app.route("/our-rooms")
 def ourRooms():
     if request.method == 'GET':
-        rooms = room.getAll()
-        perPage = 3
-        totalPage = ceil(len(rooms)/perPage)
-        return render_template('hotel/our-room.html',rooms=rooms, totalPage=totalPage, perPage=perPage)
+        rooms, perPage, totalPage = roomService.getAll()
+        return render_template('hotel/our-room.html',rooms=rooms,visit=True, totalPage=totalPage, perPage=perPage)
 
 @app.route("/aboutus")
 @login_required
@@ -71,7 +50,7 @@ def contact():
     if request.method == 'GET':
         return render_template('hotel/contact-us.html')
     if request.method == 'POST':
-        name, email, message = contactValidate(request)
+        name, email, message = auth.contactValidate(request)
         msg = Message('Hello',
                       sender='tienkg5554@gmail.com',
                       recipients=['tienkg4445@gmail.com'])
@@ -80,32 +59,14 @@ def contact():
         return redirect('/')
 
 
-@app.route("/gallery")
-def gallery():
-    return render_template('hotel/gallery.html')
-
-
 @app.route("/booking", methods=['post', 'get'])
 @login_required
 def booking():
     if request.method == 'GET':
-        bookingInfo = session.get('booking')
-        if(not bookingInfo):
-            return redirect('/')
-        qrURL = bookingInfo['qrURL'] or None
-        errorCode =  request.args.get('errorCode') or None
-        if(errorCode):
-            bookingInfo['isDone'] = True
-        if(bookingInfo['isDone']):
-            reservation.create(bookingInfo)
-
-            session['booking'] = None
+        bookingInfo, qrURL, errorCode = roomService.handleGetBooking(request)
         return render_template('hotel/booking.html', bookingInfo=bookingInfo, qrURL=qrURL, errorCode=errorCode)
     if request.method == 'POST':
-        bookingInfo = bookingRoom(request)
-        amount = float(bookingInfo['tax']) * bookingInfo['price'] * bookingInfo['dayTotal']
-        qrURL = utils.createQRCode(int(amount))
-        session['booking']['qrURL'] = qrURL
+        bookingInfo, qrURL = roomService.handlePostBooking(request)
         return render_template('hotel/booking.html',bookingInfo=bookingInfo, qrURL=qrURL)
 
 
@@ -119,7 +80,7 @@ def register():
     if request.method == 'GET':
         return render_template('hotel/register.html')
     if request.method == 'POST':
-        user, result = registerValidate(request)
+        user, result = auth.registerValidate(request)
         if not user:
             return render_template('hotel/register.html', error=result)
         db.session.add(user)
@@ -132,12 +93,12 @@ def login():
     if request.method == 'GET':
         return render_template('hotel/login.html')
     if request.method == 'POST':
-        user, error = authValidate(request)
+        user, error = auth.authValidate(request)
         if not user:
             return render_template('hotel/login.html', error=error)
         login_user(user=user)
         session['user'] = user.id
-        next = handleNextUrl(request)
+        next = utils.handleNextUrl(request)
         return redirect(next)
 
 
@@ -150,7 +111,7 @@ def logout():
 @app.route('/login-admin', methods=['post', 'get'])
 def login_admin():
     if request.method == 'POST':
-        user,error = authValidate(request)
+        user,error = auth.authValidate(request)
         if user:
             login_user(user=user)
     return redirect('/admin')

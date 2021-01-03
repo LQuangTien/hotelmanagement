@@ -1,4 +1,4 @@
-from sqlalchemy import or_, func, not_, and_
+from sqlalchemy import or_, func
 
 from mainapp import db
 from mainapp.models import Room, RoomType, Reservation
@@ -19,8 +19,7 @@ def get(name):
     return roomInfo, typeInfo
 
 
-
-def getByQuery(type=None, arriveDate=None, departureDate=None):
+def getByDate(type=None, arriveDate=None, departureDate=None):
     bookedRoomBasedOnTime = db.session.query(Reservation.room).filter(
         or_(func.DATE(arriveDate).between(Reservation.arriveDate, Reservation.departureDate),
             func.DATE(departureDate).between(Reservation.arriveDate, Reservation.departureDate)
