@@ -1,0 +1,67 @@
+{% extends 'base/base.html' %}
+{% block title %}
+    <title>Chondo Hotel | Booking</title>
+{% endblock %}
+{% set name = 'History' %}
+{% block content %}
+<style>
+    .table tr:first-child td>p {
+        font-weight: bold !important;
+    }
+</style>
+    <!--Room booking start-->
+    <div class="room-booking ptb-80 white_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title mb-80 text-center">
+                        <h2>Booking <span>history</span></h2>
+                        <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                     <div class="booking-done">
+                    <div class="text-center" >
+                        <table class="table table-striped" >
+                            <tr>
+                                <td><p>Room </p></td>
+                                <td><p>Arrive </p></td>
+                                <td><p>Departure</p></td>
+                                <td><p>Number of guest</p></td>
+                                <td><p>Foreigner</p></td>
+                                <td><p>Over Capacity</p></td>
+                                <td><p>Tax</p></td>
+                                <td><p>Total</p></td>
+                            </tr>
+                            {% for reservation in reservations %}
+                            <tr class="row2">
+                                <td><p>{{reservation.Room.name}} </p></td>
+                                <td><p>{{reservation.arriveDate}} </p></td>
+                                <td><p>{{reservation.departureDate}}</p></td>
+                                <td><p>{{reservation.numberOfGuest}}</p></td>
+                                {% if reservation.hasForeigner == True%}
+                                <td><p>Yes</p></td>
+                                {% else %}
+                                <td><p>No</p></td>
+                                {% endif %}
+                                {% if reservation.isOverCapacity == True%}
+                                <td><p>Yes</p></td>
+                                {% else %}
+                                <td><p>No</p></td>
+                                {% endif %}
+                                <td><p>{{reservation.tax}}</p></td>
+                                <td><p>{{reservation.total|int}}</p></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!--Room booking end-->
+{% endblock %}
+

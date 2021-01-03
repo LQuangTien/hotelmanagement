@@ -39,6 +39,7 @@
                                         {% elif current_user.is_authenticated %}
                                         <li class="auth"><a>Hello, <span>{{current_user.username}}</span><i class="fa fa-angle-down"></i></a>
                                             <ul class="dropdown_menu">
+                                                <li><a href="/history">History</a></li>
                                                 <li><a href="/logout">Log out</a></li>
                                             </ul>
                                         </li>

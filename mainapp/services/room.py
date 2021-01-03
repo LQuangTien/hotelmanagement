@@ -1,17 +1,68 @@
+from math import ceil
 from flask import session
-from datetime import datetime
-from mainapp.model import room, user
-from mainapp.model.regulation import getRegulation
+from mainapp import utils
+from werkzeug.utils import redirect
 from mainapp.utils import subtractDate
+from mainapp.services import reservation
+
+from mainapp.model import room, user, regulation
+
 
 SECONDS_IN_ONE_DAY = 60*60*24
 
+def handlePostBooking(request):
+  bookingInfo = bookingRoom(request)
+  amount = float(bookingInfo['tax']) * bookingInfo['price'] * bookingInfo['dayTotal']
+  qrURL = utils.createQRCode(int(amount))
+  session['booking']['qrURL'] = qrURL
+  return bookingInfo, qrURL
+
+def handleGetBooking(request):
+  bookingInfo = session.get('booking')
+  if (not bookingInfo):
+    return redirect('/')
+  qrURL = bookingInfo['qrURL'] or None
+  errorCode = request.args.get('errorCode') or None
+  if (errorCode):
+    bookingInfo['isDone'] = True
+  if (bookingInfo['isDone']):
+    reservation.create(bookingInfo)
+    session['booking'] = None
+  return bookingInfo, qrURL, errorCode
+
+def getAll():
+  rooms = room.getAll()
+  perPage = 3
+  totalPage = ceil(len(rooms) / perPage)
+  return rooms, perPage, totalPage
+
+def handleGetRooms(request):
+  type = None if request.args.get('type') == 'Any' else request.args.get('type')
+  arriveDate = request.args.get('arriveDate')
+  departureDate = request.args.get('departureDate')
+  numberOfGuest = int(request.args.get("numberOfGuest"))
+  hasForeigner = request.args.get("hasForeigner")
+  hasForeigner = True if hasForeigner == 'True' else False
+  session['bookForm'] = {
+    "arriveDate": arriveDate,
+    "departureDate": departureDate,
+    "numberOfGuest": numberOfGuest,
+    "hasForeigner": hasForeigner,
+    "type": type,
+  }
+  return type, arriveDate, departureDate
+
+def getByDate(type, arriveDate, departureDate):
+  rooms = room.getByDate(type, arriveDate, departureDate)
+  perPage = 3
+  totalPage = ceil(len(rooms) / perPage)
+  return rooms, perPage, totalPage
 
 def bookingRoom(request):
 
-  LIMIT_CAPACITY = getRegulation('limitCapacity')
-  SURCHARGE_CAPACITY = getRegulation('surchargeCapacity')
-  SURCHARGE_FOREIGNER = getRegulation('surchargeForeigner')
+  LIMIT_CAPACITY = regulation.getRegulation('limitCapacity')
+  SURCHARGE_CAPACITY = regulation.getRegulation('surchargeCapacity')
+  SURCHARGE_FOREIGNER = regulation.getRegulation('surchargeForeigner')
 
   roomName = int(request.form.get("roomName"))
   roomInfo, typeInfo = room.get(roomName)
@@ -33,6 +84,7 @@ def bookingRoom(request):
   session['booking'] = {
     "tax": tax,
     "room": roomInfo.name,
+    "roomId": roomInfo.id,
     "sex": currentUser.sex,
     "image": roomInfo.image,
     "price": typeInfo.price,
@@ -46,5 +98,6 @@ def bookingRoom(request):
     "departureDate": departureDate,
     "lastname": currentUser.lastname,
     "firstname": currentUser.firstname,
+    "isDone": False,
   }
   return session['booking']

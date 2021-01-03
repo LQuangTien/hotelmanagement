@@ -15,11 +15,11 @@ def handleNextUrl(request):
   if not request:
     return None
   next = request.args.get('next')
-  if next == None:
-    return '/'
   bookForm = session.get('bookForm')
   if bookForm:
     return f"rooms?arriveDate={bookForm['arriveDate']}&departureDate={bookForm['departureDate']}&type={bookForm['type']}&numberOfGuest={bookForm['numberOfGuest']}&hasForeigner={bookForm['hasForeigner']}"
+  if next == None:
+    return "/"
   return next
 
 
@@ -30,7 +30,7 @@ def createQRCode(amount):
   accessKey = environ.get('ACCESS_KEY')
   serectkey = bytes(environ.get('SECRET_KEY'),'utf-8')
   orderInfo = "Thanh toán tiền khách sạn"
-  returnUrl = environ.get('DOMAIN')
+  returnUrl = environ.get('DOMAIN')+"/booking"
   notifyurl = environ.get('DOMAIN')
   amount = str(amount)
   orderId = str(uuid.uuid4())

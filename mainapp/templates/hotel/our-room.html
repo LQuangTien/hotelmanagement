@@ -12,8 +12,7 @@
       <div class="col-md-12">
         <div class="section-title mb-75">
           <h2>Our <span>room</span></h2>
-          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered by injected
-            humour.</p>
+          <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI</p>
         </div>
       </div>
     </div>
@@ -25,19 +24,19 @@
             {% for room in rooms[page * perPage : (page + 1) * perPage] %}
             {% set roomInfo = room[0] %}
             {% set typeInfo = room[1] %}
-            <form action="/booking" method="post">
+            <form action="/booking" method="post" id="form">
               <input type="hidden" id="roomName" name="roomName" value={{roomInfo}} >
               <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="single-room mb-80">
                   <div class="room-img">
-                    <a href="#">
+                    <a onclick="roomClick()">
                       <img width="370px" height="256px" src="{{ url_for('static', filename=roomInfo.image)}}" alt="">
                     </a>
                   </div>
                   <div class="room-desc">
                     <div class="room-name">
                       <h3>
-                        <a href="#">
+                        <a onclick="roomClick()">
                           Phòng {{roomInfo.name}} ({{roomInfo.capacity}} người)
                         </a>
                       </h3>
@@ -46,11 +45,13 @@
                       <h5>Loại phòng: {{typeInfo.name}}</h5>
                       <h5>{{ "{:,}".format(typeInfo.price) }} VND<span>/day</span></h5>
                     </div>
+                    {% if visit != True %}
                     <div class="room-book">
                       <button style="border: none">
                         <a>Book now</a>
                       </button>
                     </div>
+                    {% endif %}
                   </div>
                 </div>
               </div>
@@ -58,20 +59,73 @@
             {% endfor %}
           </div>
           {% endfor %}
+          {% if totalPage == 0 %}
+            <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI CHO THÔNG BÁO HẾT PHÒNG</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="booking-info-deatils">
+        <div class="single-room-booking-form mt-60">
+            <div class="booking_form_inner">
+                <form action="{{ url_for('rooms') }}" style="text-align: left">
+                    <div class="single-form-part">
+                        <label for="arriveDate" class="booking-label">Arrive Date</label>
+                        <div class="date-to mb-20">
+                            <input id="arriveDate" type="date" name="arriveDate">
+                        </div>
+                    </div>
+                    <div class="single-form-part">
+                        <label for="departureDate" class="booking-label">Departure Date</label>
+                        <div class="date-to mb-20">
+                            <input id="departureDate" type="date" name="departureDate">
+                        </div>
+                    </div>
+                    <div class="single-form-part">
+                        <label id="hasForeignerInput" class="booking-label mb-15" for="hasForeigner">Has foreinger ? <input id="hasForeigner" type="checkbox" name="hasForeigner" value="True"></label>
+                    </div>
+                    <div class="single-form-part custom-part">
+                        <label for="departureDate" class="booking-label">Room Type</label>
+                        <div class="select-book mb-20">
+                            <select name="type" class="select-booking ">
+                                <option value="1" selected>A</option>
+                                <option value="2">B</option>
+                                <option value="3">C</option>
+                                <option value="Any">Any</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="single-form-part custom-part">
+                        <label for="departureDate" class="booking-label">Number of guest</label>
+                        <div class="select-book mb-20">
+                            <select name="numberOfGuest" class="select-booking">
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="submit-form">
+                        <button type="submit">Check Availability</button>
+                    </div>
+                </form>
+            </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-<!--Room Section end-->
-<!--<script>-->
-<!--  function onSubmit() {-->
-<!--    const room = $('#roomInfo').val()-->
-<!--    const arriveDate = $('#arriveDate').val()-->
-<!--    const departureDate = $('#departureDate').val()-->
-<!--    localStorage.setItem("bookingInfo", JSON.stringify({room, arriveDate, departureDate}))-->
-<!--  }-->
-<!--</script>-->
-{% endblock %}
 
-<!-- onclick="document.getElementById('form-{{roomInfo.name}}').submit();"-->
+{% endblock %}
+{% block script %}
+<script>
+  if('{{visit}}' != 'True'){
+      $('a').css("cursor", "pointer");
+  }
+  function roomClick(){
+    if('{{visit}}' == 'True'){
+      return
+    }
+    $('.room-book > button').click()
+  }
+  </script>
+{% endblock %}
