@@ -1,10 +1,10 @@
 from os import environ
 from mainapp.model import room, reservation
 from flask_mail import Message
-from flask import render_template, session
+from flask import render_template, session, jsonify
 from mainapp import app, login, utils, mail
 from flask_login import login_user, login_required
-from mainapp.services import auth, room as roomService
+from mainapp.services import auth, room as roomService, reservation as reservationService
 
 login.login_view = "login"
 
@@ -22,8 +22,9 @@ def index():
 
 @app.route("/history")
 def history():
-    a = reservation.getByUserId(1)
-    return render_template('hotel/history.html', reservations=a)
+    page = request.args.get('page') or 1
+    reservations, perPage, totalPage = reservationService.getAll()
+    return render_template('hotel/history.html', reservations=reservations, perPage= perPage, totalPage=totalPage, page=int(page))
 
 
 @app.route("/rooms")
@@ -51,10 +52,10 @@ def contact():
         return render_template('hotel/contact-us.html')
     if request.method == 'POST':
         name, email, message = auth.contactValidate(request)
-        msg = Message('Hello',
+        msg = Message("Customer's contact" ,
                       sender='tienkg5554@gmail.com',
                       recipients=['tienkg4445@gmail.com'])
-        msg.body = email + "\n" + name + "\n" + message
+        msg.body ="Email: " + email + "\n" + "Name: " + name + "\n" + message
         mail.send(msg)
         return redirect('/')
 
@@ -116,6 +117,10 @@ def login_admin():
             login_user(user=user)
     return redirect('/admin')
 
+@app.route('/api/roomtypes')
+def roomtypes():
+    types, maxCapacity = roomService.getRoomTypes()
+    return jsonify({"types": types, "maxCapacity": maxCapacity})
 
 if __name__ == "__main__":
     from mainapp.admin_module import *

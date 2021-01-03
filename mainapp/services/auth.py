@@ -39,7 +39,7 @@ def registerValidate(request):
     password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
     user = User(username=username, password=password, email=email,
                 firstname=firstname, lastname=lastname, address=address,
-                sex=sex, isActive=True, isAdmin=False)
+                sex=sex, role=2)
     return user, "Register successfully"
 
 def contactValidate(request):

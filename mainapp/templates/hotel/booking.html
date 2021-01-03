@@ -36,8 +36,8 @@
                                             <h3 class="s_room_title">Room {{bookingInfo["room"]}}</h3>
                                             <div class="room_price">
                                                 <h4>Price</h4>
-                                                <h5>{{ "{:,}".format(bookingInfo["price"]) }} VND<span>/day</span></h5>
-                                                <p>SỬA CÁI NỘI DUNG NÀY LẠI</p>
+                                                <h5>{{ "{:,}".format(bookingInfo["price"]) }} VND<span>/day</span> ( {{bookingInfo["arriveDate"]}} - {{bookingInfo["departureDate"]}} )</h5>
+                                                <p>{{bookingInfo["description"]}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -47,36 +47,31 @@
                                                 <div class="single-form-part">
                                                     <label for="arriveDate" class="booking-label">Arrive Date</label>
                                                     <div class="date-to mb-20">
-                                                        <input id="arriveDate" type="date" name="arriveDate">
+                                                        <input id="arriveDate" type="date" name="arriveDate" required onchange="compareDate()">
                                                     </div>
                                                 </div>
                                                 <div class="single-form-part">
                                                     <label for="departureDate" class="booking-label">Departure Date</label>
                                                     <div class="date-to mb-20">
-                                                        <input id="departureDate" type="date" name="departureDate">
+                                                        <input id="departureDate" type="date" name="departureDate" required onchange="compareDate()">
                                                     </div>
                                                 </div>
                                                 <div class="single-form-part">
                                                     <label id="hasForeignerInput" class="booking-label mb-15" for="hasForeigner">Has foreinger ? <input id="hasForeigner" type="checkbox" name="hasForeigner" value="True"></label>
                                                 </div>
                                                 <div class="single-form-part custom-part">
-                                                    <label for="departureDate" class="booking-label">Room Type</label>
+                                                    <label for="type" class="booking-label">Room Type</label>
                                                     <div class="select-book mb-20">
-                                                        <select name="type" class="select-booking ">
-                                                            <option value="1" selected>A</option>
-                                                            <option value="2">B</option>
-                                                            <option value="3">C</option>
+                                                        <select name="type"  id="type" required style="border: 1px solid white;">
+
                                                             <option value="Any">Any</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="single-form-part custom-part">
-                                                    <label for="departureDate" class="booking-label">Number of guest</label>
+                                                    <label for="numberOfGuest" class="booking-label">Number of guest</label>
                                                     <div class="select-book mb-20">
-                                                        <select name="numberOfGuest" class="select-booking">
-                                                            <option value="1">One</option>
-                                                            <option value="2">Two</option>
-                                                            <option value="3">Three</option>
+                                                        <select id="numberOfGuest" required name="numberOfGuest" style="border: 1px solid white;">
                                                         </select>
                                                     </div>
                                                 </div>
@@ -94,24 +89,24 @@
                                         <form action="#">
                                             <div class="booking-form-list">
                                                 <div class="single-form-part">
-                                                    <div class="name mb-15">
-                                                        <input type="text" placeholder="First Name" value="{{bookingInfo['firstname']}}">
+                                                    <div class="name mb-15 ">
+                                                        <input disabled type="text" placeholder="First Name" value="{{bookingInfo['firstname']}}">
                                                     </div>
                                                     <div class="name mb-15">
-                                                        <input type="text" placeholder="Sex" value="{{bookingInfo['sex']}}">
+                                                        <input disabled type="text" placeholder="Sex" value="{{bookingInfo['sex']}}">
                                                     </div>
                                                 </div>
                                                 <div class="single-form-part">
                                                     <div class="name mb-15">
-                                                        <input type="text" placeholder="Last Name" value="{{bookingInfo['lastname']}}">
+                                                        <input disabled type="text" placeholder="Last Name" value="{{bookingInfo['lastname']}}">
                                                     </div>
                                                     <div class="name mb-15">
-                                                        <input type="text" placeholder="Addess" value="{{bookingInfo['address']}}">
+                                                        <input disabled type="text" placeholder="Addess" value="{{bookingInfo['address']}}">
                                                     </div>
                                                 </div>
                                                 <div class="single-form-part">
                                                     <div class="mail mb-15">
-                                                        <input type="text" placeholder="Your Email" value="{{bookingInfo['email']}}" >
+                                                        <input style="text-transform: none;" disabled type="text" placeholder="Your Email" value="{{bookingInfo['email']}}" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -155,20 +150,24 @@
                                         </table>
                                     </div>
                                     <div class="booking-done-description">
-                                        <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI</p>
-                                        <div class="succesfully">
-                                            <strong><a href="{{qrURL}}">Payment</a></strong>
+                                        <p><h4>Hope you have a nice time at our hotel</h4></p>
+                                        <div class="succesfully" style="text-decoration: underline; font-size: 24px">
+                                            <strong><a href="{{qrURL}}">Click here to book room</a></strong>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                             <div role="tabpanel" class="tab-pane" id="done">
                                 <div class="booking-done">
                                     <div class="booking-done-description">
-                                        <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI</p>
                                         <div class="succesfully">
                                             {% if errorCode == "0" %}
-                                                <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI CHO VIỆC THÔNG BÁO THANH TOÁN THÀNH CÔNG</p>
+                                                <h4>Thank you for use our service</h4>
+                                                <p>If you want to see booking history: <a href="/history">Click here</a></p>
+                                                <p>If you want to return to homepage: <a href="/">Click here</a></p>
+                                            {% else %}
+                                                <h4>Please complete your booking</h4>
                                             {% endif %}
                                         </div>
                                     </div>
@@ -182,13 +181,34 @@
     </div>
      <!--Room booking end-->
     {% block script %}
-    <script>
-        if('{{ errorCode }}' == '0'){
-            $('ul.nav li:last-child>a').click()
-        } else {
-            $('ul.nav li:first-child>a').click()
-        }
-    </script>
+
+        <script>
+            if('{{ errorCode }}' == '0'){
+                $('ul.nav li:last-child>a').click()
+            } else {
+                $('ul.nav li:first-child>a').click()
+            }
+        </script>
+        <script>
+          $('#arriveDate').prop('min', function(){
+              return new Date().toJSON().split('T')[0];
+           });
+           $('#departureDate').prop('min', function(){
+              return new Date().toJSON().split('T')[0];
+           });
+          function compareDate() {
+              var arriveDate = document.getElementById("arriveDate").value;
+              var departureDate = document.getElementById("departureDate").value;
+              console.log(arriveDate)
+                    console.log(departureDate)
+              if (new Date(arriveDate).getTime() > new Date(departureDate).getTime()) {
+                    alert("Departure date must be bigger than arrive date");
+                    document.getElementById("departureDate").value = null;
+                    return false;
+               }
+              return true;
+          }
+        </script>
     {%endblock%}
 {% endblock %}
 

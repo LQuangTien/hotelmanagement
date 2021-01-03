@@ -6,7 +6,7 @@ from flask_login import logout_user, current_user
 from werkzeug.utils import redirect
 
 from mainapp import admin, db
-from mainapp.models import User, Room, RoomType, Reservation, Regulation
+from mainapp.models import User, Room, RoomType, Reservation, Regulation, Role
 from flask_admin.contrib.sqla import ModelView
 
 from mainapp.services import report
@@ -15,7 +15,7 @@ from mainapp.services.report import MyBarGraph
 
 class AuthenticatedView(ModelView):
     def is_accessible(self):
-        return current_user.is_authenticated and current_user.isAdmin
+        return current_user.is_authenticated and current_user.role == 1
 
     def inaccessible_callback(self, name, **kwargs):
         return redirect(url_for('login_admin', next=request.url))
@@ -23,7 +23,7 @@ class AuthenticatedView(ModelView):
 
 class CustomAuthenticatedView(BaseView):
     def is_accessible(self):
-        return current_user.is_authenticated
+        return current_user.is_authenticated and current_user.role == 1
 
     def inaccessible_callback(self, name, **kwargs):
         return redirect(url_for('login_admin', next=request.url))
@@ -71,6 +71,7 @@ class userView(AuthenticatedView):
 
 admin.add_view(ReportView(name='Monthly Report'))
 admin.add_view(userView(User, db.session))
+admin.add_view(AuthenticatedView(Role, db.session))
 admin.add_view(AuthenticatedView(Room, db.session))
 admin.add_view(AuthenticatedView(RoomType, db.session))
 admin.add_view(AuthenticatedView(Regulation, db.session))

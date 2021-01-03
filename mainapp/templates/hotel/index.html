@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Chondo Hotel | Home1</title>
+    <title>Chondo Hotel | Home</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% include 'blocks/style.html' %}
@@ -25,36 +25,31 @@
                             <div class="booking-box">
                                 <div class="booking-title">
                                     <h3>Book A Room</h3>
-                                    <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI</p>
+                                    <p></p>
                                 </div>
                                 <div class="booking-form">
                                     <form action="{{ url_for('rooms') }}">
                                         <label class="booking-label" for="arriveDate">Arrive Date</label>
                                         <div class="b-date arrive mb-15">
-                                            <input id="arriveDate" type="date" name="arriveDate">
+                                            <input id="arriveDate" type="date" name="arriveDate" onchange="compareDate()" required>
                                         </div>
                                         <label class="booking-label" for="departureDate">Departure Date</label>
                                         <div class="b-date departure mb-15">
-                                            <input id="departureDate" type="date" name="departureDate">
+                                            <input id="departureDate" type="date" name="departureDate" onchange="compareDate()" required>
                                         </div>
                                         <label class="booking-label" for="type">Room type</label>
                                         <div class="select-book mb-15">
-                                            <select id="type" name="type" class="select-booking">
-                                                <option value="1">A</option>
-                                                <option value="2">B</option>
-                                                <option value="3">C</option>
+                                            <select id="type" name="type" style="border: 1px solid white;" required>
                                                 <option value="Any">Any</option>
                                             </select>
                                         </div>
                                         <label class="booking-label" for="numberOfGuest">Number of guest</label>
                                         <div class="select-book mb-15">
-                                            <select id="numberOfGuest" name="numberOfGuest" class="select-booking" >
-                                                <option value="1">One</option>
-                                                <option value="2">Two</option>
-                                                <option value="3">Three</option>
+                                            <select id="numberOfGuest" name="numberOfGuest" required style="border: 1px solid white;">
+
                                             </select>
                                         </div>
-                                        <label id="hasForeignerInput" class="booking-label mb-15" for="hasForeigner">Has foreinger ? <input id="hasForeigner" type="checkbox" name="hasForeigner" value="True"></label>
+                                        <label id="hasForeignerInput" class="booking-label mb-15" for="hasForeigner">Has foreinger ? <input id="hasForeigner" type="checkbox" name="hasForeigner" value="True" ></label>
                                         <div class="submit-form">
                                             <button type="submit">Check Availability</button>
                                         </div>
@@ -75,7 +70,7 @@
                                         <b>places</b>
                                     </span>
                                 </h1>
-                                <p class="welcome-desc">SỬA CÁI NỘI DUNG DÒNG NÀY LẠI</p>
+                                <p class="welcome-desc">Chondo Hotel is a lovely hotel, in the heart of Budapest, within the triangle formed by the bustling pedestrian shopping street Thu Duc</p>
                             </div>
                         </div>
                     </div>
@@ -90,7 +85,7 @@
                     <div class="col-md-12">
                         <div class="section-title mb-80">
                             <h2>About <span>Chondo</span></h2>
-                            <p>SỬA NỘI DUNG DÒNG NÀY LẠI</p>
+                            <p></p>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -113,7 +108,7 @@
                     <div class="col-md-12">
                         <div class="section-title mb-75">
                             <h2>our <span>Room</span></h2>
-                            <p>SỬA NỘI DUNG DÒNG NÀY LẠI</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -130,10 +125,10 @@
                                     </div>
                                     <div class="room-desc">
                                         <div class="room-name">
-                                            <h3><a>Phòng {{roomInfo.name}} ({{roomInfo.capacity}} người)</a></h3>
+                                            <h3><a>Room {{roomInfo.name}} ({{roomInfo.capacity}} people)</a></h3>
                                         </div>
                                         <div class="room-rent">
-                                            <h5>Loại phòng: {{typeInfo.name}}</h5>
+                                            <h5>Room type: {{typeInfo.name}}</h5>
                                             <h5>{{ "{:,}".format(typeInfo.price) }} VND<span>/day</span></h5>
                                         </div>
                                     </div>
@@ -153,7 +148,7 @@
                     <div class="col-md-12">
                         <div class="section-title mb-80">
                             <h2>our <span>Staff</span></h2>
-                            <p>SỬA NỘI DUNG DÒNG NÀY LẠI</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
@@ -163,23 +158,17 @@
                             <div class="col-md-4">
                                 <div class="single-staff">
                                     <div class="sraff-inner">
-                                        <img src="{{url_for('static', filename='images/staff/staff1.jpg') }}" alt="">
+                                        <img src="{{url_for('static', filename='images/staff/Soa.jpg') }}" alt="">
                                         <div class="staff-title">
                                             <span class="plus"></span>
-                                            <h2>Soleman</h2>
+                                            <h2>Luu Quang Tien</h2>
                                             <h5>hotel staff</h5>
 
                                         </div>
                                         <div class="staff-hover-desc">
-                                            <h2>Soleman</h2>
+                                            <h2>Luu Quang Tien</h2>
                                             <h5>hotel staff</h5>
                                             <p>There are many variaons of passa of Lorem Ipsuable, amrn in sofby injected humour, amr.</p>
-                                            <div class="scoial_icons">
-                                                <a href="#"><i class="mdi mdi-facebook"></i></a>
-                                                <a href="#"><i class="mdi mdi-rss"></i></a>
-                                                <a href="#"><i class="mdi mdi-google-plus"></i></a>
-                                                <a href="#"><i class="mdi mdi-instagram"></i></a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -187,23 +176,16 @@
                             <div class="col-md-4">
                                 <div class="single-staff">
                                     <div class="sraff-inner">
-                                        <img src="{{url_for('static', filename='images/staff/staff2.jpg')}}" alt="">
+                                        <img src="{{url_for('static', filename='images/staff/Gabrie.jpg')}}" alt="">
                                         <div class="staff-title">
                                             <span class="plus"></span>
-                                            <h2>Soleman</h2>
+                                            <h2>Dang Vu Dung</h2>
                                             <h5>hotel staff</h5>
-
                                         </div>
                                         <div class="staff-hover-desc">
-                                            <h2>Soleman</h2>
+                                            <h2>Dang Vu Dung</h2>
                                             <h5>hotel staff</h5>
                                             <p>There are many variaons of passa of Lorem Ipsuable, amrn in sofby injected humour, amr.</p>
-                                            <div class="scoial_icons">
-                                                <a href="#"><i class="mdi mdi-facebook"></i></a>
-                                                <a href="#"><i class="mdi mdi-rss"></i></a>
-                                                <a href="#"><i class="mdi mdi-google-plus"></i></a>
-                                                <a href="#"><i class="mdi mdi-instagram"></i></a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -211,23 +193,17 @@
                             <div class="col-md-4">
                                 <div class="single-staff">
                                     <div class="sraff-inner">
-                                        <img src="{{url_for('static', filename='images/staff/staff3.jpg')}}" alt="">
+                                        <img src="{{url_for('static', filename='images/staff/cream.jpg')}}" alt="">
                                         <div class="staff-title">
                                             <span class="plus"></span>
-                                            <h2>Soleman</h2>
+                                            <h2>Nguyen Minh Tien</h2>
                                             <h5>hotel staff</h5>
 
                                         </div>
                                         <div class="staff-hover-desc">
-                                            <h2>Soleman</h2>
+                                            <h2>Nguyen Minh Tien</h2>
                                             <h5>hotel staff</h5>
                                             <p>There are many variaons of passa of Lorem Ipsuable, amrn in sofby injected humour, amr.</p>
-                                            <div class="scoial_icons">
-                                                <a href="#"><i class="mdi mdi-facebook"></i></a>
-                                                <a href="#"><i class="mdi mdi-rss"></i></a>
-                                                <a href="#"><i class="mdi mdi-google-plus"></i></a>
-                                                <a href="#"><i class="mdi mdi-instagram"></i></a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -235,23 +211,17 @@
                             <div class="col-md-4">
                                 <div class="single-staff">
                                     <div class="sraff-inner">
-                                        <img src="{{url_for('static', filename='images/staff/staff1.jpg')}}" alt="">
+                                        <img src="{{url_for('static', filename='images/staff/ab.jpg')}}" alt="">
                                         <div class="staff-title">
                                             <span class="plus"></span>
-                                            <h2>Soleman</h2>
+                                            <h2>Nguyen Bui Tiep</h2>
                                             <h5>hotel staff</h5>
 
                                         </div>
                                         <div class="staff-hover-desc">
-                                            <h2>Soleman</h2>
+                                            <h2>Nguyen Bui Tiep</h2>
                                             <h5>hotel staff</h5>
                                             <p>There are many variaons of passa of Lorem Ipsuable, amrn in sofby injected humour, amr.</p>
-                                            <div class="scoial_icons">
-                                                <a href="#"><i class="mdi mdi-facebook"></i></a>
-                                                <a href="#"><i class="mdi mdi-rss"></i></a>
-                                                <a href="#"><i class="mdi mdi-google-plus"></i></a>
-                                                <a href="#"><i class="mdi mdi-instagram"></i></a>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -271,16 +241,16 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="testimonial-list">
                             <div class="single-testimonial">
-                                <h2>Louis Smith</h2>
-                               <p>SỬA NỘI DUNG DÒNG NÀY LẠI</p>
+                                <h2>Nguyen Quang Duy</h2>
+                               <p style="font-size: 18px;">This hotel is beautiful</p>
                             </div>
                             <div class="single-testimonial">
-                                <h2>Louis Smith</h2>
-                               <p>SỬA NỘI DUNG DÒNG NÀY LẠI</p>
+                                <h2>Nguyen Truong Thinh</h2>
+                               <p style="font-size: 18px;">This hotel is excellent</p>
                             </div>
                             <div class="single-testimonial">
-                                <h2>Louis Smith</h2>
-                               <p>SỬA NỘI DUNG DÒNG NÀY LẠI</p>
+                                <h2>Le Thanh Hai</h2>
+                               <p style="font-size: 18px;">This hotel is modern</p>
                             </div>
                         </div>
                     </div>
@@ -290,37 +260,8 @@
 
         </div>
         <!--Testimonial end-->
-        <!--Our gallery start-->
-        <div class="our-gallery text-center ptb-80 white_bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-title mb-80">
-                            <h2>our <span>Gallery</span></h2>
-                            <p>SỬA NỘI DUNG DÒNG NÀY LẠI</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="our-gallery-photo">
-                <div class="single-gallery">
-                    <img src="images/gallery/g-1.jpg" alt="">
-                </div>
-                <div class="single-gallery">
-                    <img src="images/gallery/g-2.jpg" alt="">
-                </div>
-                <div class="single-gallery">
-                    <img src="images/gallery/g-5.jpg" alt="">
-                </div>
-                <div class="single-gallery">
-                    <img src="images/gallery/g-4.jpg" alt="">
-                </div>
-                <div class="single-gallery">
-                    <img src="images/gallery/g-5.jpg" alt="">
-                </div>
-            </div>
-        </div>
-        <!--Our gallery end-->
+        <br>
+
         <!--Hotel communities start-->
         <div class="hotel-cmmunities ptb-100 text-center">
             <div class="community-bg-opacity"></div>
@@ -348,6 +289,7 @@
             </div>
 
         </div>
+        <br>
         <!--Hotel communities end-->
         {% include 'blocks/footer.html' %}
     </div>
@@ -364,6 +306,24 @@
             }).show();
         }
         </script>
+    <script>
+         $('#arriveDate').prop('min', function(){
+            return new Date().toJSON().split('T')[0];
+         });
+         $('#departureDate').prop('min', function(){
+            return new Date().toJSON().split('T')[0];
+         });
+        function compareDate() {
+            var arriveDate = document.getElementById("arriveDate").value;
+            var departureDate = document.getElementById("departureDate").value;
+            if (new Date(arriveDate).getTime() > new Date(departureDate).getTime()) {
+                  alert("Departure date must be bigger than arrive date");
+                  document.getElementById("departureDate").value = null;
+                  return false;
+             }
+            return true;
+        }
+    </script>
     {% endblock %}
 </body>
 </html>

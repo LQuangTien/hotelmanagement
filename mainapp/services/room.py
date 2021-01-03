@@ -5,10 +5,14 @@ from werkzeug.utils import redirect
 from mainapp.utils import subtractDate
 from mainapp.services import reservation
 
-from mainapp.model import room, user, regulation
+from mainapp.model import room, roomtype, user, regulation
 
 
 SECONDS_IN_ONE_DAY = 60*60*24
+
+def getRoomTypes():
+  maxCapacity =  int(regulation.getAll()[0].value)
+  return [type.name for type in roomtype.getAll()], maxCapacity
 
 def handlePostBooking(request):
   bookingInfo = bookingRoom(request)
@@ -28,6 +32,7 @@ def handleGetBooking(request):
   if (bookingInfo['isDone']):
     reservation.create(bookingInfo)
     session['booking'] = None
+    session['bookForm'] = None
   return bookingInfo, qrURL, errorCode
 
 def getAll():
@@ -87,6 +92,7 @@ def bookingRoom(request):
     "roomId": roomInfo.id,
     "sex": currentUser.sex,
     "image": roomInfo.image,
+    "description": roomInfo.description,
     "price": typeInfo.price,
     "arriveDate": arriveDate,
     "dayTotal": int(dayTotal),

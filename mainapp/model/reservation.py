@@ -1,10 +1,10 @@
-from sqlalchemy import and_
+from sqlalchemy import and_, desc
 
 from mainapp import db
 from mainapp.models import Reservation
 
 def getByUserId(userId):
-  return Reservation.query.filter(Reservation.user == userId).order_by(Reservation.arriveDate).all()
+  return Reservation.query.filter(Reservation.user == userId).order_by(desc(Reservation.id)).all()
 
 
 def getByDate(start_date, end_date):

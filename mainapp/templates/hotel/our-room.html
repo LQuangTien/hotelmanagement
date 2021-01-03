@@ -12,7 +12,6 @@
       <div class="col-md-12">
         <div class="section-title mb-75">
           <h2>Our <span>room</span></h2>
-          <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI</p>
         </div>
       </div>
     </div>
@@ -37,12 +36,12 @@
                     <div class="room-name">
                       <h3>
                         <a onclick="roomClick()">
-                          Phòng {{roomInfo.name}} ({{roomInfo.capacity}} người)
+                          Room {{roomInfo.name}} ({{roomInfo.capacity}} people)
                         </a>
                       </h3>
                     </div>
                     <div class="room-rent">
-                      <h5>Loại phòng: {{typeInfo.name}}</h5>
+                      <h5>Room type: {{typeInfo.name}}</h5>
                       <h5>{{ "{:,}".format(typeInfo.price) }} VND<span>/day</span></h5>
                     </div>
                     {% if visit != True %}
@@ -60,7 +59,7 @@
           </div>
           {% endfor %}
           {% if totalPage == 0 %}
-            <p>SỬA CÁI NỘI DUNG DÒNG NÀY LẠI CHO THÔNG BÁO HẾT PHÒNG</p>
+            <h4>Out of room, please book again</h4>
           {% endif %}
         </div>
       </div>
@@ -71,13 +70,13 @@
                     <div class="single-form-part">
                         <label for="arriveDate" class="booking-label">Arrive Date</label>
                         <div class="date-to mb-20">
-                            <input id="arriveDate" type="date" name="arriveDate">
+                            <input id="arriveDate" type="date" name="arriveDate" required onchange="compareDate()">
                         </div>
                     </div>
                     <div class="single-form-part">
                         <label for="departureDate" class="booking-label">Departure Date</label>
                         <div class="date-to mb-20">
-                            <input id="departureDate" type="date" name="departureDate">
+                            <input id="departureDate" type="date" name="departureDate" required onchange="compareDate()">
                         </div>
                     </div>
                     <div class="single-form-part">
@@ -86,10 +85,7 @@
                     <div class="single-form-part custom-part">
                         <label for="departureDate" class="booking-label">Room Type</label>
                         <div class="select-book mb-20">
-                            <select name="type" class="select-booking ">
-                                <option value="1" selected>A</option>
-                                <option value="2">B</option>
-                                <option value="3">C</option>
+                            <select id="type" name="type" style="border: 1px solid white;" required>
                                 <option value="Any">Any</option>
                             </select>
                         </div>
@@ -97,10 +93,8 @@
                     <div class="single-form-part custom-part">
                         <label for="departureDate" class="booking-label">Number of guest</label>
                         <div class="select-book mb-20">
-                            <select name="numberOfGuest" class="select-booking">
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
+                            <select id="numberOfGuest" name="numberOfGuest" style="border: 1px solid white;" required>
+
                             </select>
                         </div>
                     </div>
@@ -128,4 +122,22 @@
     $('.room-book > button').click()
   }
   </script>
+<script>
+  $('#arriveDate').prop('min', function(){
+      return new Date().toJSON().split('T')[0];
+   });
+   $('#departureDate').prop('min', function(){
+      return new Date().toJSON().split('T')[0];
+   });
+  function compareDate() {
+      var arriveDate = document.getElementById("arriveDate").value;
+      var departureDate = document.getElementById("departureDate").value;
+      if (new Date(arriveDate).getTime() > new Date(departureDate).getTime()) {
+            alert("Departure date must be bigger than arrive date");
+            document.getElementById("departureDate").value = null;
+            return false;
+       }
+      return true;
+  }
+</script>
 {% endblock %}

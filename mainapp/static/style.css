@@ -328,7 +328,6 @@
     border: none;
 }
 .select-book::before {
-    content: "";
     font-family: FontAwesome;
     font-size: 18px;
     pointer-events: none;
@@ -338,7 +337,7 @@
     z-index: 1
 }
 .select-book select option {
-    background: rgba(83, 152, 178, 0.5) none repeat scroll 0 0;
+    background: rgba(83, 152, 178, 0.9) none repeat scroll 0 0;
 }
 .submit-form > button {
   background: #fff none repeat scroll 0 0;

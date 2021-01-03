@@ -1,5 +1,13 @@
+from math import ceil
+
 from flask import session
 from mainapp.model import reservation
+
+def getAll():
+  reservations = reservation.getByUserId(session.get('user'))
+  perPage = 10
+  totalPage = ceil(len(reservations) / perPage)
+  return reservations, perPage, totalPage
 
 def create(bookingInfo):
   userId = session.get('user')
