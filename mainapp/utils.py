@@ -28,7 +28,7 @@ def createQRCode(amount):
   endpoint = environ.get('PAYMENT_ENDPOINT')
   partnerCode = environ.get('PARTNER_CODE')
   accessKey = environ.get('ACCESS_KEY')
-  serectkey = bytes(environ.get('SECRET_KEY'),'utf-8')
+  serectkey = b"2l9NSfk8rWqc4CpYGZva7dBfCYo9xM25"
   orderInfo = "Thanh toán tiền khách sạn"
   returnUrl = environ.get('DOMAIN')+"/booking"
   notifyurl = environ.get('DOMAIN')

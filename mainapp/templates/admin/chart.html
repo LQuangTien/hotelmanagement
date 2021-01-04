@@ -38,16 +38,28 @@
 </style>
 <div class="chart__layout">
   <div class="chart__wrapper" >
+
     <canvas class="chart__size" id="salesChart"></canvas>
     <p>{{salesMonth}}-{{salesYear}}</p>
     <button type="button" onclick="backsale()">Back</button>
     <button type="button" onclick="nextsale()">Next</button>
+    <div>
+      <input type="number" id="monthsale" min="1" max="12" placeholder="Month">
+      <input type="number" id="yearsale" min="2021" max="9999" placeholder="Year">
+      <button onclick="findsale()">Find</button>
+    </div>
+
   </div>
   <div class="chart__wrapper" >
     <canvas class="chart__size" id="usedChart"></canvas>
     <p>{{usedMonth}}-{{usedYear}}</p>
     <button type="button" onclick="backused()">Back</button>
     <button type="button" onclick="nextused()">Next</button>
+    <div>
+      <input type="number" id="monthused" min="1" max="12" placeholder="Month">
+      <input type="number" id="yearused" min="2021" max="9999" placeholder="Year">
+      <button onclick="findused()">Find</button>
+    </div>
   </div>
 </div>
 
